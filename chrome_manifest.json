@@ -1,0 +1,11 @@
+{
+    "name": "bili Web Extension",
+    "version": "1.0.0",
+    "description": "Use bili scheme to start bili command line program.",
+    "author": "lifegpc",
+    "permissions": ["contextMenus", "tabs"],
+    "background": {
+        "scripts": ["js/background.js"]
+    },
+    "manifest_version": 2
+}
