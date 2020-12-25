@@ -26,6 +26,7 @@ function getCurrentVersion() {
  * 解析版本
  * @param {string} ver
  * @returns {Array<number>} 版本数组，长度固定为4
+ * @throws {parseVersionError}
  */
 function parseVersion(ver) {
     var verlist = ver.split('.', 4);
@@ -34,7 +35,7 @@ function parseVersion(ver) {
     verlist.forEach((value) => {
         var p = parseInt(value, 10);
         if (isNaN(p)) v.push(p);
-        else;
+        else throw new parseVersionError("Invalid version: " + ver);
     })
     while (v.length < 4) v.push(0);
     return v;
@@ -59,6 +60,20 @@ function dealWithSettings(obj, f) {
     var o = obj;
     var currentVer = getCurrentVersion();
     if (!o.hasOwnProperty("version")) return resetSettings(() => {
+        readSettings(f, true);
+    })
+    var sever = o.version;
+    try {
+        var curver = parseVersion(currentVer);
+        var ver = parseVersion(sever);
+    } catch (e) {
+        if (e instanceof parseVersionError) {
+            return resetSettings(() => {
+                readSettings(f, true);
+            })
+        } else throw e;
+    }
+    if (compareVersion(curver, ver) < 1) return resetSettings(() => {
         readSettings(f, true);
     })
     f(o);

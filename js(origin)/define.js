@@ -96,3 +96,14 @@ const chr = true;
  * @prop {string} version 程序版本
  * @prop {object} cml 命令行相关参数设置
  */
+/**
+ * 解析版本错误
+ * @param {string} message 
+ */
+function parseVersionError(message="Invalid version.") {
+    this.name = 'parseVersionError';
+    this.message = message;
+    this.stack = (new Error()).stack;
+}
+parseVersionError.prototype = Object.create(Error.prototype);
+parseVersionError.prototype.constructor = parseVersionError;
