@@ -1,9 +1,10 @@
 {
-    "name": "bili Web Extension",
+    "name": "__MSG_name__",
     "version": "1.0.0",
-    "description": "Use bili scheme to start bili command line program.",
+    "description": "__MSG_description__",
+    "default_locale": "en",
     "author": "lifegpc",
-    "permissions": ["contextMenus", "tabs"],
+    "permissions": ["contextMenus", "tabs", "storage"],
     "background": {
         "scripts": ["js/background.js"]
     },

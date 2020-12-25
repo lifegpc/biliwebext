@@ -24,10 +24,10 @@ from re import search
 
 
 def ph():
-    print("prepare.py [-u] [-c] [-j] [--chrome/--firefox] [file list]")
+    print("prepare.py [-u] [-c] [-j <java location>] [--chrome/--firefox] [file list]")
 
 def gopt(args: List[str]):
-    re = getopt(args, 'h?ucj:', ['help', 'lan=', 'chrome', 'firefox'])
+    re = getopt(args, 'h?ucj:', ['help', 'chrome', 'firefox'])
     rr = re[0]
     r = {}
     h = False

@@ -15,17 +15,19 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
 /// <reference path="define.js" />
 if (chr) {
-    console.log('ContextMenu.js Chrome Ver');
-    /**@param {chromeContextMenusProperties} createProperties 菜单项目选项*/
+    /**
+     * @param {chromeContextMenusProperties} createProperties 菜单项目选项
+     * @param {()=>void} callback 回调函数
+     * @returns {number|string} 菜单ID
+    */
     function temp(createProperties, callback) {
-        var contextMenus = window['chrome']['contextMenus'];
-        return contextMenus.create(createProperties, callback);
+        var create = window['chrome']['contextMenus']['create'];
+        return create(createProperties, callback);
     }
     var createContextMenuChrome = temp;
 } else {
-    console.log('ContextMenu.js FireFox Ver');
     function createContextMenuFirefox(createProperties, callback) {
-        var menus = window['menus'];
-        return menus.create(createProperties, callback);
+        var create = window['firefox']['menus']['create'];
+        return create(createProperties, callback);
     }
 }

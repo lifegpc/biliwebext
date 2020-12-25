@@ -90,3 +90,9 @@ const chr = true;
  * @prop {chromeContextMenusItemType?} type 菜单选项类型。默认为normal。
  * @prop {boolean?} visible 选项是否可见。
 */
+/**
+ * 插件设置
+ * @typedef {Object} ExtensionSettings
+ * @prop {string} version 程序版本
+ * @prop {object} cml 命令行相关参数设置
+ */

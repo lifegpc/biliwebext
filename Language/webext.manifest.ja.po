@@ -1,0 +1,36 @@
+# biliwebext - manifest.json Strings
+# (C) 2020 lifegpc
+# This file is distributed under the same license as the biliwebexr package.
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Translators:
+# Kum4423, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: bili\n"
+"POT-Creation-Date: 2020-08-10 05:08:00+0000\n"
+"PO-Revision-Date: 2020-12-25 04:51+0000\n"
+"Last-Translator: Kum4423, 2020\n"
+"Language-Team: Japanese (https://www.transifex.com/lifegpc/teams/111556/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "name"
+msgid "bili Browser Extension"
+msgstr "biliブラウザ拡張機能"
+
+msgctxt "desc"
+msgid ""
+"Use bili URI scheme to start bili command line program.\n"
+"Source code: https://github.com/lifegpc/biliwebext"
+msgstr ""
+"bili URI スキームを使って bili コマンドラインプログラムを起動します。\n"
+"ソースコード: https://github.com/lifegpc/biliwebext"
+
+msgctxt "open"
+msgid "Use bili to open this page"
+msgstr ""

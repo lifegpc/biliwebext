@@ -13,27 +13,19 @@
 
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
-/// <reference path="ContextMenu.js" />
-/// <reference path="i18n.js" />
-/// <reference path="settings.js" />
-/**@type {ExtensionSettings}*/
-var settings = {};
-readSettings((info) => {
-    settings = info;
-    console.log("Settings: ", settings);
-    createContextMenu();
-})
-console.log(i18nGetMessage("name"));
-function createContextMenu() {
+/// <reference path="define.js" />
+/**
+ * @param {string} messageName 消息名称
+ * @param {Array<string>?} substitutions 子消息
+ * @param {{"escapeLt": boolean?}?} options 是否escape <等
+ * @returns {string} 经过翻译的消息
+ */
+function i18nGetMessage(messageName, substitutions = [], options = null) {
     if (chr) {
-        var pageContextId = createContextMenuChrome({
-            "title": i18nGetMessage("openpage"), "onclick": (info, tab) => {
-                console.log(info);
-                console.log(tab);
-            }
-        }, () => {
-            console.log('add page context menu');
-        });
-        if (pageContextId) console.log('page context id: ', pageContextId);
+        var getMessage = window['chrome']['i18n']['getMessage'];
+        return getMessage(messageName, substitutions, options);
+    } else {
+        var getMessage = window['firefox']['i18n']['getMessage'];
+        return getMessage(messageName, substitutions);
     }
 }

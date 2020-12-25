@@ -2,3 +2,7 @@ js/
 Temp/
 build/
 *.jar
+build.user.bat
+*.json
+!chrome_manifest.json
+!language.json
