@@ -34,7 +34,7 @@ function parseVersion(ver) {
     var v = [];
     verlist.forEach((value) => {
         var p = parseInt(value, 10);
-        if (isNaN(p)) v.push(p);
+        if (!isNaN(p)) v.push(p);
         else throw new parseVersionError("Invalid version: " + ver);
     })
     while (v.length < 4) v.push(0);
