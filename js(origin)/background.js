@@ -17,7 +17,6 @@
 /// <reference path="i18n.js" />
 /// <reference path="settings.js" />
 /// <reference path="tabs.js" />
-/**@type {ExtensionSettings}*/
 var settings = {};
 readSettings((info) => {
     settings = info;

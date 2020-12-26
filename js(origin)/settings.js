@@ -14,6 +14,7 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
 /// <reference path="define.js" />
+/// <reference path="settingsClass.js" />
 /**
  * 解析版本错误
  * @param {string} message 
@@ -87,9 +88,6 @@ function dealWithSettings(obj, f) {
     if (compareVersion(curver, ver) == -1) return resetSettings(() => {
         readSettings(f, true);
     })
-    if (!o.hasOwnProperty("cml") || typeof (o["cml"]) != "object") {
-        o["cml"] = {}
-    }
     f(o);
 }
 /**
@@ -99,7 +97,10 @@ function dealWithSettings(obj, f) {
  */
 function readSettings(f, passCheck = false) {
     var sync = window['chrome']['storage']['sync'];
-    sync.get((obj) => { passCheck ? f(obj) : dealWithSettings(obj, f) });
+    sync.get((obj) => {
+        var obj = new ExtensionSettings(obj);
+        passCheck ? f(obj) : dealWithSettings(obj, f)
+    });
 }
 /**
  * 保存设置
@@ -118,7 +119,6 @@ function saveSettings(obj, f, passCheck = false) {
  * @param {()=>void} f 回调函数
  */
 function resetSettings(f) {
-    /**@type {ExtensionSettings}*/
-    var obj = { "version": getCurrentVersion(), "cml": {} };
+    var obj = new ExtensionSettings();
     saveSettings(obj, f, true);
 } 

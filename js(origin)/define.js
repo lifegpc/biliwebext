@@ -91,12 +91,6 @@ const chr = true;
  * @prop {boolean|undefined} visible 选项是否可见。
 */
 /**
- * 插件设置
- * @typedef {Object} ExtensionSettings
- * @prop {string} version 程序版本
- * @prop {object} cml 命令行相关参数设置
- */
-/**
  * Context Menu 返回对象
  * https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/menus/OnClickData
  * @typedef {Object} MenusOnclickedData

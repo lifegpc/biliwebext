@@ -14,13 +14,14 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
 /// <reference path="define.js" />
+/// <reference path="cml.js" />
 /**
- * 命令行参数
+ * 插件设置
  * @class
  * @constructor
  * @public
  */
-class cml {
+class ExtensionSettings {
     /**
      * 构造函数
      * @param {object} data
@@ -33,26 +34,13 @@ class cml {
                 if (cmlparalist.indexOf(key) == -1) delete this[key];
             })
         }
-        if (!this.hasOwnProperty("d") || (this["d"] != null && typeof (this["d"]) != "number"))
-            /**@type {number?} 下载方法*/
-            this["d"] = null;
-        if (!this.hasOwnProperty("p") || (this["p"] != null && typeof (this["p"]) != "string"))
-            /**@type {string?} P数*/
-            this["p"] = null;
-    }
-    /**
-     * 返回GET参数
-     * @returns {string} GET字符串
-     */
-    dump() {
-        var s = ""
-        Object.getOwnPropertyNames(this).forEach((key) => {
-            if (this[key]) {
-                var temp = encodeURIComponent(key) + "=" + encodeURIComponent(this[key]);
-                s = s == "" ? s + "?" + temp : s + "&" + temp;
-            }
-        })
-        return s;
+        if (!this.hasOwnProperty("version") || typeof (this["version"]) != "string")
+            /**@type {string} 程序版本*/
+            this["version"] = "1.0.0";
+        if (!this.hasOwnProperty("cml"))
+            /**@type {cml} 命令行相关参数设置*/
+            this["cml"] = new cml();
+        else if (typeof (this["cml"]) != "object" || !this["cml"] instanceof cml)
+            this["cml"] = new cml(this["cml"]);
     }
 }
-var cmlparalist = Object.getOwnPropertyNames(new cml(undefined, true))
