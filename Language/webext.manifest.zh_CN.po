@@ -42,3 +42,15 @@ msgstr "使用bili打开此链接"
 msgctxt "sel"
 msgid "Use bili to open selected text"
 msgstr "使用bili打开选中的文本"
+
+msgctxt "newtab"
+msgid "Open this page in new tab."
+msgstr "在新标签页打开此页。"
+
+msgctxt "inputc"
+msgid "Input: "
+msgstr "输入："
+
+msgctxt "open"
+msgid "Open bili"
+msgstr "打开bili"

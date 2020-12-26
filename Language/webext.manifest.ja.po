@@ -42,3 +42,15 @@ msgstr ""
 msgctxt "sel"
 msgid "Use bili to open selected text"
 msgstr ""
+
+msgctxt "newtab"
+msgid "Open this page in new tab."
+msgstr ""
+
+msgctxt "inputc"
+msgid "Input: "
+msgstr ""
+
+msgctxt "open"
+msgid "Open bili"
+msgstr ""

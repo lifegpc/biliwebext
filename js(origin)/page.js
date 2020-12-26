@@ -16,18 +16,25 @@
 /// <reference path="sendMessage.js" />
 /// <reference path="i18n.js" />
 /// <reference path="tabs.js" />
+/// <reference path="str.js" />
+/// <reference path="cml.js" />
 /**@type {ExtensionSettings}*/
 var settings;
 /**@type {boolean}*/
 var ispopup;
+/**@type {cml}*/
+var cmli;
 sendMessage({ "event": "getSettings" }, (response) => {
     settings = response;
     console.log("Settings: ", settings);
+    cmli = new cml(settings.cml);
     getCurrentTab((tab) => {
         ispopup = tab == undefined ? true : false;
         console.log('is popup: ', ispopup);
         getCurrentURL(() => {
             console.log("Current URL: ", url);
+            if (ispopup && url) newTabLink();
+            if (url) addContent();
         })
     });
 })
@@ -51,7 +58,50 @@ function getCurrentURL(callback) {
         })
     } else {
         var uri = new URL(window.location.href);
-        if (uri.searchParams.get("p") != null) url = uri;
+        if (uri.searchParams.get("p") != null) url = uri.searchParams.get("p");
         callback();
     }
+}
+/**@type {HTMLLinkElement}*/
+var tablink;
+/**
+ * 新建新标签页打开链接
+ * @param {boolean} first 是否是第1次调用
+*/
+function newTabLink(first = true) {
+    /**@type {HTMLDivElement} */
+    if (first) {
+        var newtab = document.getElementById('newtab');
+        newtab.style.display = null;
+        tablink = document.createElement('a');
+    }
+    tablink.href = getExtURL("/page.html?p=" + encodeURIComponent(url));
+    if (first) {
+        tablink.innerText = i18nGetMessage("newtab");
+        tablink.addEventListener('click', () => {
+            createTab({ "url": tablink.href });
+        })
+        newtab.append(tablink);
+        newtab.append(document.createElement('br'));
+    }
+}
+function addContent() {
+    document.getElementById('main').style.display = "inline-block";
+    document.getElementById('inputl').innerText = i18nGetMessage("input");
+    /**@type {HTMLInputElement}*/
+    var input = document.getElementById('input');
+    input.value = url;
+    input.addEventListener('input', () => {
+        if (input.value.length == 0) return;
+        url = input.value;
+        if (tablink) newTabLink(false);
+    })
+    document.getElementById('openlink').innerText = i18nGetMessage("open");
+    document.getElementById('openlink').addEventListener('click', () => {
+        var page = "bili://" + encodeURIComponent(url) + cmli.dump();
+        console.log(page);
+        if (!window.open(page)) {
+            createTab({ "url": page })
+        }
+    })
 }

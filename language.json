@@ -4,4 +4,7 @@
     ,["manifest open", "openpage"]
     ,["manifest link", "openlink"]
     ,["manifest sel", "opensel"]
+    ,["manifest newtab", "newtab"]
+    ,["manifest inputc", "input"]
+    ,["manifest open", "open"]
 ]
