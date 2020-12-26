@@ -40,3 +40,33 @@ function openLinkInBackground(url, tab) {
         createTab(prop);
     }
 }
+/**
+ * 取得当前的标签页
+ * @param {(tab: chromeTab|undefined)=>void} callback 
+ */
+function getCurrentTab(callback) {
+    return window['chrome']['tabs']['getCurrent'](callback);
+}
+/**
+ * 查询标签页
+ * @param {queryTabInfo} queryInfo 查询信息
+ * @param {(result: chromeTab[])=>void} callback 回调函数
+ */
+function queryTabs(queryInfo, callback) {
+    return window['chrome']['tabs']['query'](queryInfo, callback);
+}
+/**
+ * 取得窗口的活跃标签页
+ * @param {(tab: chromeTab|undefined)=>void} callback 
+ * @param {number|undefined} windowId 
+ */
+function getSelectedTab(callback, windowId = undefined) {
+    /**@type {queryTabInfo}*/
+    var info = { "active": true };
+    if (windowId == undefined) info["currentWindow"] = true;
+    else info["windowId"] = windowId;
+    return queryTabs(info, (result) => {
+        if (result.length) callback(result[0]);
+        else callback(undefined);
+    })
+}

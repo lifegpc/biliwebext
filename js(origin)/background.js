@@ -61,18 +61,26 @@ function createContextMenu() {
         if (linkContextId) console.log('link context id: ', linkContextId);
     }
     var selectionContextId;
-    function createSelectionContextMenu()
-    {
-        selectionContextId = createContextMenuItem({"title": i18nGetMessage("opensel"), "contexts": ["selection"], "onclick": (info, tab) => {
-            console.log(info);
-            console.log(tab);
-            if (info.hasOwnProperty("selectionText")) {
-                var page = "bili://" + encodeURIComponent(info['selectionText']);
-                openLinkInBackground(page);
+    function createSelectionContextMenu() {
+        selectionContextId = createContextMenuItem({
+            "title": i18nGetMessage("opensel"), "contexts": ["selection"], "onclick": (info, tab) => {
+                console.log(info);
+                console.log(tab);
+                if (info.hasOwnProperty("selectionText")) {
+                    var page = "bili://" + encodeURIComponent(info['selectionText']);
+                    openLinkInBackground(page);
+                }
             }
-        }}, ()=>{
+        }, () => {
             console.log('add selection context menu');
         })
         if (selectionContextId) console.log('selection context id: ', selectionContextId);
     }
 }
+window['chrome']['runtime']['onMessage']['addListener']((request, sender, sendResponse) => {
+    /**@type {Message}*/
+    var r = request;
+    if (r.event == "getSettings") {
+        sendResponse(settings);
+    }
+})

@@ -97,17 +97,6 @@ const chr = true;
  * @prop {object} cml 命令行相关参数设置
  */
 /**
- * 解析版本错误
- * @param {string} message 
- */
-function parseVersionError(message="Invalid version.") {
-    this.name = 'parseVersionError';
-    this.message = message;
-    this.stack = (new Error()).stack;
-}
-parseVersionError.prototype = Object.create(Error.prototype);
-parseVersionError.prototype.constructor = parseVersionError;
-/**
  * Context Menu 返回对象
  * https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/menus/OnClickData
  * @typedef {Object} MenusOnclickedData
@@ -129,4 +118,35 @@ parseVersionError.prototype.constructor = parseVersionError;
  * @prop {boolean|undefined} selected 标签页是否被选中
  * @prop {string|undefined} url 新打开的标签页的URL
  * @prop {string|undefined} windowId 打开新标签的窗口ID
+ */
+/**
+ * chrome Window Type
+ * https://developer.chrome.com/docs/extensions/reference/tabs/#type-WindowType
+ * @typedef {"normal"|"popup"|"panel"|"app"|"devtools"} windowType
+ */
+/**
+ * sendMessage Message
+ * @typedef {Object} Message
+ * @prop {"getSettings"} event 执行内容
+ */
+/**
+ * QueryTabInfo
+ * https://developer.chrome.com/docs/extensions/reference/tabs/#method-query
+ * @typedef {Object} queryTabInfo
+ * @prop {boolean|undefined} active 标签页是否被激活
+ * @prop {boolean|undefined} audible 标签页是否正在播放声音
+ * @prop {boolean|undefined} autoDiscardable 是否会被自动丢弃当资源不足时
+ * @prop {boolean|undefined} currentWindow 是否属于当前窗口
+ * @prop {boolean|undefined} discarded 是否已经被丢弃
+ * @prop {number|undefined} groupId 标签页所处于的组ID
+ * @prop {boolean|undefined} highlighted 标签页是否高亮
+ * @prop {number|undefined} index 标签页索引
+ * @prop {boolean|undefined} lastFocusedWindow 标签页是否在最后一个被聚焦的窗口中
+ * @prop {boolean|undefined} muted 标签页是否被静音
+ * @prop {boolean|undefined} pinned 标签页是否被固定
+ * @prop {chromeTabStatus|undefined} status 标签页加载状态
+ * @prop {string|undefined} title 标签页标题
+ * @prop {string|string[]|undefined} url 匹配URL
+ * @prop {number|undefined} windowId 父窗口ID
+ * @prop {windowType|undefined} windowType 窗口类型
  */

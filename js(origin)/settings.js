@@ -15,6 +15,17 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
 /// <reference path="define.js" />
 /**
+ * 解析版本错误
+ * @param {string} message 
+ */
+function parseVersionError(message = "Invalid version.") {
+    this.name = 'parseVersionError';
+    this.message = message;
+    this.stack = (new Error()).stack;
+}
+parseVersionError.prototype = Object.create(Error.prototype);
+parseVersionError.prototype.constructor = parseVersionError;
+/**
  * 获取当前版本
  * @returns {string} 当前版本
  */
@@ -73,9 +84,12 @@ function dealWithSettings(obj, f) {
             })
         } else throw e;
     }
-    if (compareVersion(curver, ver) < 1) return resetSettings(() => {
+    if (compareVersion(curver, ver) == -1) return resetSettings(() => {
         readSettings(f, true);
     })
+    if (!o.hasOwnProperty("cml") || typeof (o["cml"]) != "object") {
+        o["cml"] = {}
+    }
     f(o);
 }
 /**
