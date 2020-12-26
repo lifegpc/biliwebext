@@ -2,4 +2,6 @@
      ["manifest name", "name"]
     ,["manifest desc", "description"]
     ,["manifest open", "openpage"]
+    ,["manifest link", "openlink"]
+    ,["manifest sel", "opensel"]
 ]

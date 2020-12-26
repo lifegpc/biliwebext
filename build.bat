@@ -33,8 +33,8 @@ FOR %%x in (%*) DO (
         )
     )
 )
-IF %debug% EQU 0 IF EXIST build %rm% -rfv build
-IF %debug% EQU 1 IF EXIST debug %rm% -rfv debug
+IF !debug! EQU 0 IF EXIST build %rm% -rfv build
+IF !debug! EQU 1 IF EXIST debug %rm% -rfv debug
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 IF EXIST js %rm% -rfv js
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
@@ -42,24 +42,32 @@ IF EXIST Temp %rm% -rfv Temp
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 CALL :GETPREPARE
 IF !all! EQU 1 (
-    CALL :BUILDCHROME
+    CALL :BUILD
+    IF %ERRORLEVEL% NEQ 0 EXIT /B 1
+    SET /A chrome=0
+    CALL :BUILD
+    IF %ERRORLEVEL% NEQ 0 EXIT /B 1
+) ELSE (
+    CALL :BUILD
     IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 )
 ENDLOCAL
 EXIT /B 0
 
-:BUILDCHROME
+:BUILD
 CALL :GETPREPARE
-%python% prepare.py!para! -c ContextMenu.js i18n.js settings.js background.js
+%python% prepare.py!para! -c ContextMenu.js i18n.js settings.js tabs.js background.js
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 %python% language.py
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
-SET o=\chrome\
-IF %debug% EQU 1 SET o=debug!o!
-IF %debug% EQU 0 SET o=build!o!
+IF !chrome! EQU 1 SET o=\chrome\
+IF !chrome! EQU 0 SET o=\firefox\
+IF !debug! EQU 1 SET o=debug!o!
+IF !debug! EQU 0 SET o=build!o!
 IF NOT EXIST !o! %mkdir% !o!
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
-%cp% -v chrome_manifest.json !o!manifest.json
+IF !chrome! EQU 1 %cp% -v chrome_manifest.json !o!manifest.json
+IF !chrome! EQU 0 %cp% -v firefox_manifest.json !o!manifest.json
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 %cp% -v LICENSE !o!LICENSE
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1

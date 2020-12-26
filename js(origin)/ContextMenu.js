@@ -14,20 +14,12 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
 /// <reference path="define.js" />
-if (chr) {
-    /**
-     * @param {chromeContextMenusProperties} createProperties 菜单项目选项
-     * @param {()=>void} callback 回调函数
-     * @returns {number|string} 菜单ID
-    */
-    function temp(createProperties, callback) {
-        var create = window['chrome']['contextMenus']['create'];
-        return create(createProperties, callback);
-    }
-    var createContextMenuChrome = temp;
-} else {
-    function createContextMenuFirefox(createProperties, callback) {
-        var create = window['firefox']['menus']['create'];
-        return create(createProperties, callback);
-    }
+/**
+ * @param {chromeContextMenusProperties} createProperties 菜单项目选项
+ * @param {()=>void} callback 回调函数
+ * @returns {number|string} 菜单ID
+*/
+function createContextMenuItem(createProperties, callback) {
+    var create = chr ? window['chrome']['contextMenus']['create'] : window['chrome']['menus']['create'];
+    return create(createProperties, callback);
 }

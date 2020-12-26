@@ -49,7 +49,7 @@ def getdict(sn: str, lan: str, sn2: str = "webext") -> LanDict:
 
 
 class main():
-    _language_list = ['en', 'ja', 'zh_CN']
+    _language_list = [('en', 'en'), ('ja', 'ja'), ('zh_CN', 'zh')]
     _temp_dict = {}
 
     def __init__(self):
@@ -58,7 +58,7 @@ class main():
     def run(self):
         with open('language.json', 'r', encoding='utf8') as f:
             obj: LanList = load(f)
-        for self._lan in self._language_list:
+        for self._lan, self._lan2 in self._language_list:
             self._out = {}
             for i in obj:
                 self._out[i[1]] = {"message": self._getStrLabel(i[0])}
@@ -84,9 +84,9 @@ class main():
             mkdir('Temp')
         if not exists('Temp/_locales'):
             mkdir('Temp/_locales')
-        if not exists(f'Temp/_locales/{self._lan}'):
-            mkdir(f'Temp/_locales/{self._lan}')
-        with open(f'Temp/_locales/{self._lan}/messages.json', 'w', encoding='utf8') as f:
+        if not exists(f'Temp/_locales/{self._lan2}'):
+            mkdir(f'Temp/_locales/{self._lan2}')
+        with open(f'Temp/_locales/{self._lan2}/messages.json', 'w', encoding='utf8') as f:
             dump(self._out, f, ensure_ascii=False)
 
 

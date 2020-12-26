@@ -5,4 +5,5 @@ build/
 build.user.bat
 *.json
 !chrome_manifest.json
+!firefox_manifest.json
 !language.json

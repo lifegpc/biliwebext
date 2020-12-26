@@ -15,12 +15,28 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
 /// <reference path="define.js" />
 /**
- * @param {string} messageName 消息名称
- * @param {Array<string>?} substitutions 子消息
- * @param {{"escapeLt": boolean?}?} options 是否escape <等
- * @returns {string} 经过翻译的消息
+ * 创建标签页
+ * @param {tabCreateProperties} createProperties Tab创建参数
+ * @param {(tab: chromeTab)=>void} callback 回调函数
  */
-function i18nGetMessage(messageName, substitutions = [], options = null) {
-    var getMessage = window['chrome']['i18n']['getMessage'];
-    return chr ? getMessage(messageName, substitutions, options) : getMessage(messageName, substitutions);
+function createTab(createProperties, callback = (tab) => { }) {
+    var create = window['chrome']['tabs']['create'];
+    create(createProperties, callback);
+}
+/**
+ * 在背景页打开页面
+ * @param {string} url 要打开的链接
+ * @param {chromeTab} tab 菜单的标签页
+ */
+function openLinkInBackground(url, tab) {
+    console.log(url);
+    if (!window.open(url)) {
+        /**@type {tabCreateProperties} */
+        var prop = { "url": url }
+        if (tab.hasOwnProperty("id")) {
+            prop['openerTabId'] = tab['id'];
+        }
+        console.log(prop);
+        createTab(prop);
+    }
 }

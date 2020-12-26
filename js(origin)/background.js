@@ -16,6 +16,7 @@
 /// <reference path="ContextMenu.js" />
 /// <reference path="i18n.js" />
 /// <reference path="settings.js" />
+/// <reference path="tabs.js" />
 /**@type {ExtensionSettings}*/
 var settings = {};
 readSettings((info) => {
@@ -25,15 +26,53 @@ readSettings((info) => {
 })
 console.log(i18nGetMessage("name"));
 function createContextMenu() {
-    if (chr) {
-        var pageContextId = createContextMenuChrome({
-            "title": i18nGetMessage("openpage"), "onclick": (info, tab) => {
+    /**@type {chromeContextMenusType} */
+    var contexts = ["page", "link", "selection", "editable"];
+    if (!chr) contexts.push("tab");
+    var pageContextId = createContextMenuItem({
+        "title": i18nGetMessage("openpage"), "contexts": contexts, "onclick": (info, tab) => {
+            console.log(info);
+            console.log(tab);
+            if (info.hasOwnProperty("pageUrl")) {
+                var page = "bili://" + encodeURIComponent(info['pageUrl']);
+                openLinkInBackground(page, tab);
+            }
+        }
+    }, () => {
+        console.log('add page context menu');
+        createLinkContextMenu();
+    });
+    if (pageContextId) console.log('page context id: ', pageContextId);
+    var linkContextId;
+    function createLinkContextMenu() {
+        linkContextId = createContextMenuItem({
+            "title": i18nGetMessage("openlink"), "contexts": ["link"], "onclick": (info, tab) => {
                 console.log(info);
                 console.log(tab);
+                if (info.hasOwnProperty("linkUrl")) {
+                    var page = "bili://" + encodeURIComponent(info['linkUrl']);
+                    openLinkInBackground(page, tab);
+                }
             }
         }, () => {
-            console.log('add page context menu');
-        });
-        if (pageContextId) console.log('page context id: ', pageContextId);
+            console.log('add link context menu');
+            createSelectionContextMenu();
+        })
+        if (linkContextId) console.log('link context id: ', linkContextId);
+    }
+    var selectionContextId;
+    function createSelectionContextMenu()
+    {
+        selectionContextId = createContextMenuItem({"title": i18nGetMessage("opensel"), "contexts": ["selection"], "onclick": (info, tab) => {
+            console.log(info);
+            console.log(tab);
+            if (info.hasOwnProperty("selectionText")) {
+                var page = "bili://" + encodeURIComponent(info['selectionText']);
+                openLinkInBackground(page);
+            }
+        }}, ()=>{
+            console.log('add selection context menu');
+        })
+        if (selectionContextId) console.log('selection context id: ', selectionContextId);
     }
 }

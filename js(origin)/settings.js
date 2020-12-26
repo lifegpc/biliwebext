@@ -84,10 +84,8 @@ function dealWithSettings(obj, f) {
  * @param {boolean} passCheck 跳过检查设置
  */
 function readSettings(f, passCheck = false) {
-    if (chr) {
-        var sync = window['chrome']['storage']['sync'];
-        sync.get((obj) => { passCheck ? f(obj) : dealWithSettings(obj, f) });
-    }
+    var sync = window['chrome']['storage']['sync'];
+    sync.get((obj) => { passCheck ? f(obj) : dealWithSettings(obj, f) });
 }
 /**
  * 保存设置
@@ -96,12 +94,10 @@ function readSettings(f, passCheck = false) {
  * @param {boolean} passCheck 跳过检查设置
  */
 function saveSettings(obj, f, passCheck = false) {
-    if (chr) {
-        var sync = window['chrome']['storage']['sync'];
-        return passCheck ? sync.set(obj, f) : dealWithSettings(obj, (info) => {
-            sync.set(info, f);
-        });
-    }
+    var sync = window['chrome']['storage']['sync'];
+    return passCheck ? sync.set(obj, f) : dealWithSettings(obj, (info) => {
+        sync.set(info, f);
+    });
 }
 /**
  * 重置设置

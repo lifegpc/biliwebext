@@ -34,3 +34,11 @@ msgstr ""
 msgctxt "open"
 msgid "Use bili to open this page"
 msgstr ""
+
+msgctxt "link"
+msgid "Use bili to open this link"
+msgstr ""
+
+msgctxt "sel"
+msgid "Use bili to open selected text"
+msgstr ""

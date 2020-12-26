@@ -1,0 +1,18 @@
+{
+    "name": "__MSG_name__",
+    "version": "1.0.0",
+    "description": "__MSG_description__",
+    "default_locale": "en",
+    "author": "lifegpc",
+    "permissions": ["menus", "tabs", "storage"],
+    "background": {
+        "scripts": ["js/background.js"]
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "g1710431395@gmail.com",
+            "strict_min_version": "45.0"
+        }
+    },
+    "manifest_version": 2
+}

@@ -34,3 +34,11 @@ msgstr ""
 msgctxt "open"
 msgid "Use bili to open this page"
 msgstr "使用bili打开此页"
+
+msgctxt "link"
+msgid "Use bili to open this link"
+msgstr "使用bili打开此链接"
+
+msgctxt "sel"
+msgid "Use bili to open selected text"
+msgstr "使用bili打开选中的文本"
