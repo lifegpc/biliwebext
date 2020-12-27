@@ -31,7 +31,7 @@ class ExtensionSettings {
         Object.assign(this, data);
         if (!checkPass) {
             Object.getOwnPropertyNames(this).forEach((key) => {
-                if (cmlparalist.indexOf(key) == -1) delete this[key];
+                if (ExtensionSettingsparalist.indexOf(key) == -1) delete this[key];
             })
         }
         if (!this.hasOwnProperty("version") || typeof (this["version"]) != "string")
@@ -40,7 +40,8 @@ class ExtensionSettings {
         if (!this.hasOwnProperty("cml"))
             /**@type {cml} 命令行相关参数设置*/
             this["cml"] = new cml();
-        else if (typeof (this["cml"]) != "object" || !this["cml"] instanceof cml)
+        else if (typeof (this["cml"]) != "object" || !(this["cml"] instanceof cml))
             this["cml"] = new cml(this["cml"]);
     }
 }
+const ExtensionSettingsparalist = Object.getOwnPropertyNames(new ExtensionSettings(undefined, true));

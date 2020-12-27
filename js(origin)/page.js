@@ -20,6 +20,7 @@
 /// <reference path="cml.js" />
 /// <reference path="settingsClass.js" />
 /// <reference path="error.js" />
+/// <reference path="nc1.js" />
 /**@type {ExtensionSettings}*/
 var settings;
 /**@type {boolean}*/
@@ -125,6 +126,9 @@ function addContent() {
         }
         console.log(new cml(cmli));
     })
+    document.getElementById('endownmaxql').innerText = i18nGetMessage("endownmaxq");
+    document.getElementById('didownmaxql').innerText = i18nGetMessage("didownmaxq");
+    dealWithnc1(cmli);
     document.getElementById('openlink').innerText = i18nGetMessage("open");
     document.getElementById('openlink').addEventListener('click', () => {
         console.log("command line object: ", cmli);

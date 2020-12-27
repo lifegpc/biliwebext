@@ -54,3 +54,11 @@ msgstr ""
 msgctxt "partnumber"
 msgid "The number of videos/parts you want to download: "
 msgstr ""
+
+msgctxt "endownmaxq"
+msgid "Enable download with maximum quality."
+msgstr ""
+
+msgctxt "didownmaxq"
+msgid "Disable download with maximum quality."
+msgstr ""

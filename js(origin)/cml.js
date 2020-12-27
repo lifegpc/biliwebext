@@ -69,10 +69,16 @@ class cml {
             this["d"] = null;
         if (!this.hasOwnProperty("p") || this["p"] != null) {
             var str = this["p"];
-            if (typeof(this["p"]) != "string" || !checkP(str))
+            if (typeof (this["p"]) != "string" || !checkP(str))
                 /**@type {string?} P数*/
                 this["p"] = null;
         }
+        if (!this.hasOwnProperty("ym") || (this["ym"] != null && typeof (this["ym"]) != "string" && this["ym"] != ""))
+            /**@type {string?} 默认下载最高画质。*/
+            this["ym"] = null;
+        if (!this.hasOwnProperty("nm") || (this["nm"] != null && typeof (this["nm"]) != "string" && this["nm"] != ""))
+            /**@type {string?} 禁用默认下载最高画质。*/
+            this["nm"] = null;
     }
     /**
      * 返回GET参数
@@ -99,4 +105,4 @@ class cml {
         return isVaild;
     }
 }
-var cmlparalist = Object.getOwnPropertyNames(new cml(undefined, true))
+const cmlparalist = Object.getOwnPropertyNames(new cml(undefined, true));

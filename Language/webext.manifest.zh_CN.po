@@ -62,3 +62,11 @@ msgstr "下载方式："
 msgctxt "partnumber"
 msgid "The number of videos/parts you want to download: "
 msgstr "要下载的分P/视频序号："
+
+msgctxt "endownmaxq"
+msgid "Enable download with maximum quality."
+msgstr "默认下载最高画质。"
+
+msgctxt "didownmaxq"
+msgid "Disable download with maximum quality."
+msgstr "禁用默认下载最高画质。"

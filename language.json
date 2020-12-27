@@ -9,4 +9,6 @@
     ,["manifest open2", "open"]
     ,["manifest downmethod", "downmethod"]
     ,["manifest partnumber", "partnumber"]
+    ,["manifest endownmaxq", "endownmaxq"]
+    ,["manifest didownmaxq", "didownmaxq"]
 ]
