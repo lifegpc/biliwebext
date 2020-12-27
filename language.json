@@ -6,7 +6,7 @@
     ,["manifest sel", "opensel"]
     ,["manifest newtab", "newtab"]
     ,["manifest inputc", "input"]
-    ,["manifest open", "open"]
+    ,["manifest open2", "open"]
     ,["manifest downmethod", "downmethod"]
     ,["manifest partnumber", "partnumber"]
 ]

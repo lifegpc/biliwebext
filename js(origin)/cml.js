@@ -62,7 +62,24 @@ class cml {
      */
     setP(s) {
         if (!s.length) return false;
-        if (["a", "b"].indexOf(s) > -1 || stringIsNumber(s) || s.match(/([0-9]+)-([0-9]+)/)) {
+        /**
+         * 判断是否合法
+         * @param {string} s 输入
+         * @returns {boolean}
+         */
+        function check(s) {
+            var list = s.split(',');
+            var isVaild = true;
+            list.forEach((value) => {
+                if (!isVaild) return;
+                if (stringIsNumber(value)) return;
+                var m = value.match(/^([0-9]+)-([0-9]+)$/);
+                if (m && parseInt(m[1]) < parseInt(m[2])) return;
+                isVaild = false;
+            })
+            return isVaild;
+        }
+        if (["a", "b"].indexOf(s) > -1 || check(s)) {
             this["p"] = s;
             return true;
         }

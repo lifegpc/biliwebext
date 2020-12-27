@@ -19,6 +19,7 @@
 /// <reference path="str.js" />
 /// <reference path="cml.js" />
 /// <reference path="settingsClass.js" />
+/// <reference path="error.js" />
 /**@type {ExtensionSettings}*/
 var settings;
 /**@type {boolean}*/
@@ -114,8 +115,14 @@ function addContent() {
     if (cmli.p) partnumber.value = cmli.p;
     partnumber.addEventListener('input', () => {
         if (partnumber.value.length) {
-            cmli.setP(partnumber.value);
-        } else cmli.p = null;
+            if (!cmli.setP(partnumber.value)) {
+                cmli.p = null;
+                changeElementColorByError(partnumber, true);
+            } else changeElementColorByError(partnumber, false);
+        } else {
+            cmli.p = null;
+            changeElementColorByError(partnumber, false);
+        }
         console.log(new cml(cmli));
     })
     document.getElementById('openlink').innerText = i18nGetMessage("open");

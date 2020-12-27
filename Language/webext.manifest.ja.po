@@ -51,7 +51,7 @@ msgctxt "inputc"
 msgid "Input: "
 msgstr ""
 
-msgctxt "open"
+msgctxt "open2"
 msgid "Open bili"
 msgstr ""
 
