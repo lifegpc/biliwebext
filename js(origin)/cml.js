@@ -16,6 +16,36 @@
 /// <reference path="define.js" />
 /// <reference path="string.js" />
 /**
+ * 设置P数并进行检查
+ * @param {string|undefined} s 输入
+ * @returns {boolean} 输入是否有效
+ */
+function checkP(s) {
+    if (s == undefined) return false;
+    if (!s.length) return false;
+    /**
+     * 判断是否合法
+     * @param {string} s 输入
+     * @returns {boolean}
+     */
+    function check(s) {
+        var list = s.split(',');
+        var isVaild = true;
+        list.forEach((value) => {
+            if (!isVaild) return;
+            if (stringIsNumber(value)) return;
+            var m = value.match(/^([0-9]+)-([0-9]+)$/);
+            if (m && parseInt(m[1]) < parseInt(m[2])) return;
+            isVaild = false;
+        })
+        return isVaild;
+    }
+    if (["a", "b"].indexOf(s) > -1 || check(s)) {
+        return true;
+    }
+    return false;
+}
+/**
  * 命令行参数
  * @class
  * @constructor
@@ -37,9 +67,12 @@ class cml {
         if (!this.hasOwnProperty("d") || (this["d"] != null && typeof (this["d"]) != "number"))
             /**@type {number?} 下载方法*/
             this["d"] = null;
-        if (!this.hasOwnProperty("p") || (this["p"] != null && typeof (this["p"]) != "string"))
-            /**@type {string?} P数*/
-            this["p"] = null;
+        if (!this.hasOwnProperty("p") || this["p"] != null) {
+            var str = this["p"];
+            if (typeof(this["p"]) != "string" || !checkP(str))
+                /**@type {string?} P数*/
+                this["p"] = null;
+        }
     }
     /**
      * 返回GET参数
@@ -61,29 +94,9 @@ class cml {
      * @returns {boolean} 输入是否有效
      */
     setP(s) {
-        if (!s.length) return false;
-        /**
-         * 判断是否合法
-         * @param {string} s 输入
-         * @returns {boolean}
-         */
-        function check(s) {
-            var list = s.split(',');
-            var isVaild = true;
-            list.forEach((value) => {
-                if (!isVaild) return;
-                if (stringIsNumber(value)) return;
-                var m = value.match(/^([0-9]+)-([0-9]+)$/);
-                if (m && parseInt(m[1]) < parseInt(m[2])) return;
-                isVaild = false;
-            })
-            return isVaild;
-        }
-        if (["a", "b"].indexOf(s) > -1 || check(s)) {
-            this["p"] = s;
-            return true;
-        }
-        return false;
+        var isVaild = checkP(s);
+        if (isVaild) this["p"] = s;
+        return isVaild;
     }
 }
 var cmlparalist = Object.getOwnPropertyNames(new cml(undefined, true))
