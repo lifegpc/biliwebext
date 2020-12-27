@@ -46,3 +46,11 @@ msgstr ""
 msgctxt "open"
 msgid "Open bili"
 msgstr ""
+
+msgctxt "downmethod"
+msgid "Download method: "
+msgstr ""
+
+msgctxt "partnumber"
+msgid "The number of videos/parts you want to download: "
+msgstr ""

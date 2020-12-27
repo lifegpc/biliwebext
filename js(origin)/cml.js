@@ -14,6 +14,7 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
 /// <reference path="define.js" />
+/// <reference path="string.js" />
 /**
  * 命令行参数
  * @class
@@ -53,6 +54,19 @@ class cml {
             }
         })
         return s;
+    }
+    /**
+     * 设置P数并进行检查
+     * @param {string} s 输入
+     * @returns {boolean} 输入是否有效
+     */
+    setP(s) {
+        if (!s.length) return false;
+        if (["a", "b"].indexOf(s) > -1 || stringIsNumber(s) || s.match(/([0-9]+)-([0-9]+)/)) {
+            this["p"] = s;
+            return true;
+        }
+        return false;
     }
 }
 var cmlparalist = Object.getOwnPropertyNames(new cml(undefined, true))

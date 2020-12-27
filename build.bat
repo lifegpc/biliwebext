@@ -56,8 +56,8 @@ EXIT /B 0
 
 :BUILD
 CALL :GETPREPARE
-%python% prepare.py!para! -c ContextMenu.js i18n.js cml.js settingsClass.js settings.js tabs.js background.js
-%python% prepare.py!para! -c sendMessage.js i18n.js tabs.js str.js cml.js settingsClass.js page.js
+%python% prepare.py!para! -c ContextMenu.js i18n.js string.js cml.js settingsClass.js settings.js tabs.js background.js
+%python% prepare.py!para! -c sendMessage.js i18n.js tabs.js str.js string.js cml.js settingsClass.js page.js
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 %python% language.py
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1

@@ -74,7 +74,7 @@ function dealWithSettings(obj, f) {
     if (!o.hasOwnProperty("version")) return resetSettings(() => {
         readSettings(f, true);
     })
-    var sever = o.version;
+    var sever = o["version"];
     try {
         var curver = parseVersion(currentVer);
         var ver = parseVersion(sever);
@@ -87,8 +87,9 @@ function dealWithSettings(obj, f) {
     }
     if (compareVersion(curver, ver) == -1) return resetSettings(() => {
         readSettings(f, true);
-    })
-    f(o);
+    });
+    o["version"] = currentVer;
+    f(new ExtensionSettings(o));
 }
 /**
  * 从sync区读取设置
@@ -98,21 +99,17 @@ function dealWithSettings(obj, f) {
 function readSettings(f, passCheck = false) {
     var sync = window['chrome']['storage']['sync'];
     sync.get((obj) => {
-        var obj = new ExtensionSettings(obj);
-        passCheck ? f(obj) : dealWithSettings(obj, f)
+        passCheck ? f(new ExtensionSettings(obj)) : dealWithSettings(obj, f)
     });
 }
 /**
  * 保存设置
  * @param {ExtensionSettings} obj 设置 
  * @param {()=>void} f 回调函数
- * @param {boolean} passCheck 跳过检查设置
  */
-function saveSettings(obj, f, passCheck = false) {
+function saveSettings(obj, f) {
     var sync = window['chrome']['storage']['sync'];
-    return passCheck ? sync.set(obj, f) : dealWithSettings(obj, (info) => {
-        sync.set(info, f);
-    });
+    return sync.set(obj, f);
 }
 /**
  * 重置设置
@@ -120,5 +117,5 @@ function saveSettings(obj, f, passCheck = false) {
  */
 function resetSettings(f) {
     var obj = new ExtensionSettings();
-    saveSettings(obj, f, true);
+    saveSettings(obj, f);
 } 

@@ -18,6 +18,7 @@
 /// <reference path="tabs.js" />
 /// <reference path="str.js" />
 /// <reference path="cml.js" />
+/// <reference path="settingsClass.js" />
 /**@type {ExtensionSettings}*/
 var settings;
 /**@type {boolean}*/
@@ -25,7 +26,7 @@ var ispopup;
 /**@type {cml}*/
 var cmli;
 sendMessage({ "event": "getSettings" }, (response) => {
-    settings = response;
+    settings = new ExtensionSettings(response);
     console.log("Settings: ", settings);
     cmli = new cml(settings.cml);
     getCurrentTab((tab) => {
@@ -96,8 +97,30 @@ function addContent() {
         url = input.value;
         if (tablink) newTabLink(false);
     })
+    document.getElementById('downmethodl').innerText = i18nGetMessage("downmethod");
+    /**@type {HTMLInputElement}*/
+    var downmethod = document.getElementById('downmethod');
+    if (cmli.d) downmethod.value = cmli.d;
+    downmethod.addEventListener('input', () => {
+        if (downmethod.value.length) {
+            var value = downmethod.valueAsNumber;
+            cmli.d = value ? value : null;
+        } else cmli.d = null;
+        console.log(new cml(cmli));
+    })
+    document.getElementById('partnumberl').innerText = i18nGetMessage("partnumber");
+    /**@type {HTMLInputElement}*/
+    var partnumber = document.getElementById('partnumber');
+    if (cmli.p) partnumber.value = cmli.p;
+    partnumber.addEventListener('input', () => {
+        if (partnumber.value.length) {
+            cmli.setP(partnumber.value);
+        } else cmli.p = null;
+        console.log(new cml(cmli));
+    })
     document.getElementById('openlink').innerText = i18nGetMessage("open");
     document.getElementById('openlink').addEventListener('click', () => {
+        console.log("command line object: ", cmli);
         var page = "bili://" + encodeURIComponent(url) + cmli.dump();
         console.log(page);
         if (!window.open(page)) {

@@ -54,3 +54,11 @@ msgstr "输入："
 msgctxt "open"
 msgid "Open bili"
 msgstr "打开bili"
+
+msgctxt "downmethod"
+msgid "Download method: "
+msgstr "下载方式："
+
+msgctxt "partnumber"
+msgid "The number of videos/parts you want to download: "
+msgstr "要下载的分P/视频序号："

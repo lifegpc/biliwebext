@@ -7,4 +7,6 @@
     ,["manifest newtab", "newtab"]
     ,["manifest inputc", "input"]
     ,["manifest open", "open"]
+    ,["manifest downmethod", "downmethod"]
+    ,["manifest partnumber", "partnumber"]
 ]
