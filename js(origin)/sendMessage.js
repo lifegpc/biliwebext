@@ -22,3 +22,10 @@
 function sendMessage(message, fallback) {
     return window['chrome']['runtime']['sendMessage'](message, fallback);
 }
+/**
+ * 生成用来验证身份的数字
+ * @returns {number}
+ */
+function generateMessageHash() {
+    return new Date().getTime();
+}

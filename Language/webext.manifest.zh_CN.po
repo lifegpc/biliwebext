@@ -70,3 +70,15 @@ msgstr "默认下载最高画质。"
 msgctxt "didownmaxq"
 msgid "Disable download with maximum quality."
 msgstr "禁用默认下载最高画质。"
+
+msgctxt "sett"
+msgid "Settings Page"
+msgstr "设置页面"
+
+msgctxt "savesett"
+msgid "Save"
+msgstr "保存"
+
+msgctxt "saveok"
+msgid "Save successfully."
+msgstr "保存成功。"

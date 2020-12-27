@@ -21,6 +21,7 @@
 /// <reference path="settingsClass.js" />
 /// <reference path="error.js" />
 /// <reference path="nc1.js" />
+/// <reference path="cmlpage.js" />
 /**@type {ExtensionSettings}*/
 var settings;
 /**@type {boolean}*/
@@ -30,7 +31,7 @@ var cmli;
 sendMessage({ "event": "getSettings" }, (response) => {
     settings = new ExtensionSettings(response);
     console.log("Settings: ", settings);
-    cmli = new cml(settings.cml);
+    cmli = new cml(settings["cml"]);
     getCurrentTab((tab) => {
         ispopup = tab == undefined ? true : false;
         console.log('is popup: ', ispopup);
@@ -99,36 +100,7 @@ function addContent() {
         url = input.value;
         if (tablink) newTabLink(false);
     })
-    document.getElementById('downmethodl').innerText = i18nGetMessage("downmethod");
-    /**@type {HTMLInputElement}*/
-    var downmethod = document.getElementById('downmethod');
-    if (cmli.d) downmethod.value = cmli.d;
-    downmethod.addEventListener('input', () => {
-        if (downmethod.value.length) {
-            var value = downmethod.valueAsNumber;
-            cmli.d = value ? value : null;
-        } else cmli.d = null;
-        console.log(new cml(cmli));
-    })
-    document.getElementById('partnumberl').innerText = i18nGetMessage("partnumber");
-    /**@type {HTMLInputElement}*/
-    var partnumber = document.getElementById('partnumber');
-    if (cmli.p) partnumber.value = cmli.p;
-    partnumber.addEventListener('input', () => {
-        if (partnumber.value.length) {
-            if (!cmli.setP(partnumber.value)) {
-                cmli.p = null;
-                changeElementColorByError(partnumber, true);
-            } else changeElementColorByError(partnumber, false);
-        } else {
-            cmli.p = null;
-            changeElementColorByError(partnumber, false);
-        }
-        console.log(new cml(cmli));
-    })
-    document.getElementById('endownmaxql').innerText = i18nGetMessage("endownmaxq");
-    document.getElementById('didownmaxql').innerText = i18nGetMessage("didownmaxq");
-    dealWithnc1(cmli);
+    addCmlPage(cmli);
     document.getElementById('openlink').innerText = i18nGetMessage("open");
     document.getElementById('openlink').addEventListener('click', () => {
         console.log("command line object: ", cmli);

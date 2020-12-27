@@ -17,5 +17,6 @@
     "browser_action": {
         "default_popup":"page.html"
     },
+    "options_page": "options.html",
     "manifest_version": 2
 }

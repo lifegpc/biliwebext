@@ -41,13 +41,13 @@ function dealWithnc1(cli) {
     list2.forEach((key) => {
         var hlist = map[key];
         hlist.forEach((value) => {
+            var mid = value.getAttribute('mid');
+            if (mid == null || cmlparalist.indexOf(mid) == -1) {
+                if (mid == null) console.warn('Can not find mid attribute: ', value);
+                else console.warn('Can not find "', mid, '" in cml: ', value);
+                return;
+            }
             value.addEventListener('input', () => {
-                var mid = value.getAttribute('mid');
-                if (mid == null || cmlparalist.indexOf(mid) == -1) {
-                    if (mid == null) console.warn('Can not find mid attribute: ', value);
-                    else console.warn('Can not find "', mid, '" in cml: ', value);
-                    return;
-                }
                 if (value.checked) {
                     cli[mid] = "";
                     hlist.forEach((value2) => {
@@ -64,6 +64,7 @@ function dealWithnc1(cli) {
                 } else cli[mid] = null;
                 console.log(new cml(cli));
             })
+            if (cli[mid] != null) value.checked = true;
         })
     })
 }

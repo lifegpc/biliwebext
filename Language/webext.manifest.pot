@@ -62,3 +62,15 @@ msgstr ""
 msgctxt "didownmaxq"
 msgid "Disable download with maximum quality."
 msgstr ""
+
+msgctxt "sett"
+msgid "Settings Page"
+msgstr ""
+
+msgctxt "savesett"
+msgid "Save"
+msgstr ""
+
+msgctxt "saveok"
+msgid "Save successfully."
+msgstr ""

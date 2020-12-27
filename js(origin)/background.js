@@ -79,7 +79,17 @@ function createContextMenu() {
 window['chrome']['runtime']['onMessage']['addListener']((request, sender, sendResponse) => {
     /**@type {Message}*/
     var r = request;
-    if (r.event == "getSettings") {
+    if (r["event"] == "getSettings") {
         sendResponse(settings);
+    } else if (r["event"] == "saveSettingsRequest") {
+        sendResponse(1);
+        var hash = r['hash'];
+        saveSettings(new ExtensionSettings(r['settings']), () => {
+            readSettings((info) => {
+                settings = info;
+                console.log("New settings: ", settings);
+                sendMessage({ "event": "saveSettingsResult", "hash": hash, "result": true });
+            })
+        })
     }
 })

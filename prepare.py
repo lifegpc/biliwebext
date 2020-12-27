@@ -24,10 +24,10 @@ from re import search
 
 
 def ph():
-    print("prepare.py [-u] [-c] [-j <java location>] [--chrome/--firefox] [file list]")
+    print("prepare.py [-u] [-c] [-j <java location>] [--chrome/--firefox] [-d] [file list]")
 
 def gopt(args: List[str]):
-    re = getopt(args, 'h?ucj:', ['help', 'chrome', 'firefox'])
+    re = getopt(args, 'h?ucj:d', ['help', 'chrome', 'firefox'])
     rr = re[0]
     r = {}
     h = False
@@ -44,6 +44,8 @@ def gopt(args: List[str]):
             r['ch'] = True
         if i[0] == '--firefox' and not 'ch' in r:
             r['ch'] = False
+        if i[0] == '-d' and not 'd' in r:
+            r['d'] = True
     if h:
         ph()
         exit()
@@ -56,6 +58,7 @@ class main:
     _onlyc: bool = False
     _java: str = "java"
     _chrome: bool = True
+    _debug: bool = False
 
     def __init__(self, ip: dict, fl: List[str]):
         if 'u' in ip:
@@ -66,6 +69,8 @@ class main:
             self._java = ip['j']
         if 'ch' in ip:
             self._chrome = ip['ch']
+        if 'd' in ip:
+            self._debug = ip['d']
         if not exists('js(origin)/'):
             raise FileNotFoundError('js(origin)/')
         if len(fl) == 0:
@@ -151,7 +156,8 @@ class main:
         jsf = ' --js "js(origin)/define.js"'
         for fn in fl:
             jsf = jsf + f' --js "js(origin)/{fn}"'
-        if system(f'{self._java} -jar compiler.jar{jsf} --compilation_level ADVANCED_OPTIMIZATIONS -D chr={chrome} --js_output_file "js/{fn}" --create_source_map "js/{fn}.map"') != 0:
+        dcm = f' --create_source_map "js/{fn}.map"' if self._debug else ""
+        if system(f'{self._java} -jar compiler.jar{jsf} --compilation_level ADVANCED_OPTIMIZATIONS -D chr={chrome} --js_output_file "js/{fn}"{dcm}') != 0:
             raise Exception('Error in compiler.')
 
 

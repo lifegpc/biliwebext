@@ -56,8 +56,11 @@ EXIT /B 0
 
 :BUILD
 CALL :GETPREPARE
-%python% prepare.py!para! -c ContextMenu.js i18n.js string.js cml.js settingsClass.js settings.js tabs.js background.js
-%python% prepare.py!para! -c sendMessage.js i18n.js tabs.js str.js string.js cml.js settingsClass.js error.js nc1.js page.js
+%python% prepare.py!para! -c sendMessage.js ContextMenu.js i18n.js string.js cml.js settingsClass.js settings.js tabs.js background.js
+IF %ERRORLEVEL% NEQ 0 EXIT /B 1
+%python% prepare.py!para! -c sendMessage.js i18n.js tabs.js str.js string.js cml.js settingsClass.js error.js nc1.js cmlpage.js page.js
+IF %ERRORLEVEL% NEQ 0 EXIT /B 1
+%python% prepare.py!para! -c sendMessage.js i18n.js string.js cml.js settingsClass.js error.js nc1.js cmlpage.js options.js
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 %python% language.py
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
@@ -74,8 +77,6 @@ IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 %cp% -rv js !o!
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
-%cp% -rv js(origin) !o!
-IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 %cp% -rv Temp/_locales !o!
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 %cp% -rv html/*.html !o!
@@ -86,4 +87,5 @@ EXIT /B 0
 SET para=
 IF !chrome! NEQ 1 SET para=!para! --firefox
 IF !java! NEQ java SET para=!para! -j "!java!"
+IF !debug! NEQ 0 SET para=!para! -d
 EXIT /B 0

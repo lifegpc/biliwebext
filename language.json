@@ -11,4 +11,7 @@
     ,["manifest partnumber", "partnumber"]
     ,["manifest endownmaxq", "endownmaxq"]
     ,["manifest didownmaxq", "didownmaxq"]
+    ,["manifest sett", "settpage"]
+    ,["manifest savesett", "savesett"]
+    ,["manifest saveok", "saveok"]
 ]

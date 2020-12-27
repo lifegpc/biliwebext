@@ -121,7 +121,10 @@ const chr = true;
 /**
  * sendMessage Message
  * @typedef {Object} Message
- * @prop {"getSettings"} event 执行内容
+ * @prop {"getSettings"| "saveSettingsRequest"| "saveSettingsResult"} event 执行内容
+ * @prop {number} hash 用来验证身份
+ * @prop {boolean} result 结果
+ * @prop {ExtensionSettings} settings 设置
  */
 /**
  * QueryTabInfo

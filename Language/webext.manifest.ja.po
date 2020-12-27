@@ -33,40 +33,52 @@ msgstr ""
 
 msgctxt "open"
 msgid "Use bili to open this page"
-msgstr ""
+msgstr "biliを使用してこのページを開く"
 
 msgctxt "link"
 msgid "Use bili to open this link"
-msgstr ""
+msgstr "biliを使用してこのリンクを開く"
 
 msgctxt "sel"
 msgid "Use bili to open selected text"
-msgstr ""
+msgstr "biliを使用して選択したテキストを開く"
 
 msgctxt "newtab"
 msgid "Open this page in new tab."
-msgstr ""
+msgstr "新しいタブでこのページを開く"
 
 msgctxt "inputc"
 msgid "Input: "
-msgstr ""
+msgstr "入力: "
 
 msgctxt "open2"
 msgid "Open bili"
-msgstr ""
+msgstr "biliを開く"
 
 msgctxt "downmethod"
 msgid "Download method: "
-msgstr ""
+msgstr "ダウンロード方法: "
 
 msgctxt "partnumber"
 msgid "The number of videos/parts you want to download: "
-msgstr ""
+msgstr "ダウンロードしたい動画/パートの数: "
 
 msgctxt "endownmaxq"
 msgid "Enable download with maximum quality."
-msgstr ""
+msgstr "最高品質でのダウンロードを有効にする。"
 
 msgctxt "didownmaxq"
 msgid "Disable download with maximum quality."
+msgstr "最高画質でのダウンロードを無効にする。"
+
+msgctxt "sett"
+msgid "Settings Page"
+msgstr "設定画面"
+
+msgctxt "savesett"
+msgid "Save"
+msgstr "保存"
+
+msgctxt "saveok"
+msgid "Save successfully."
 msgstr ""
