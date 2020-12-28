@@ -82,3 +82,23 @@ msgstr "保存"
 msgctxt "saveok"
 msgid "Save successfully."
 msgstr "保存成功。"
+
+msgctxt "withpa"
+msgid " (with parameters)"
+msgstr "（带参数）"
+
+msgctxt "encodown"
+msgid "Enable \"Continue Download\" function."
+msgstr "启用继续下载功能。"
+
+msgctxt "dicodown"
+msgid "Disable \"Continue Download\" function."
+msgstr "禁用继续下载功能。"
+
+msgctxt "enfilter"
+msgid "Enable filter barrage."
+msgstr "启用弹幕过滤。"
+
+msgctxt "difilter"
+msgid "Disable filter barrage."
+msgstr "禁用弹幕过滤。"

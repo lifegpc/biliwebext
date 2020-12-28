@@ -17,6 +17,7 @@
 /// <reference path="i18n.js" />
 /// <reference path="settings.js" />
 /// <reference path="tabs.js" />
+/// <reference path="str.js" />
 var settings = {};
 readSettings((info) => {
     settings = info;
@@ -72,8 +73,62 @@ function createContextMenu() {
             }
         }, () => {
             console.log('add selection context menu');
+            createPageContextWithPara();
         })
         if (selectionContextId) console.log('selection context id: ', selectionContextId);
+    }
+    var pageContextWithParaId;
+    function createPageContextWithPara() {
+        /**@type {chromeContextMenusType} */
+        var contexts = ["page", "link", "selection", "editable"];
+        if (!chr) contexts.push("tab");
+        pageContextWithParaId = createContextMenuItem({
+            "title": i18nGetMessage("openpage") + i18nGetMessage("withpa"), "contexts": contexts, "onclick": (info, tab) => {
+                console.log(info);
+                console.log(tab);
+                if (info.hasOwnProperty("pageUrl")) {
+                    var page = getExtURL("/page.html?p=" + encodeURIComponent(info['pageUrl']));
+                    openLinkInBackground(page, tab);
+                }
+            }
+        }, () => {
+            console.log('add page context menu with para');
+            createLinkContextMenuWithPara();
+        })
+        if (pageContextWithParaId) console.log('page context with para id: ', pageContextWithParaId);
+    }
+    var linkContextWithParaId;
+    function createLinkContextMenuWithPara() {
+        linkContextWithParaId = createContextMenuItem({
+            "title": i18nGetMessage("openlink") + i18nGetMessage("withpa"), "contexts": ["link"], "onclick": (info, tab) => {
+                console.log(info);
+                console.log(tab);
+                if (info.hasOwnProperty("linkUrl")) {
+                    var page = getExtURL("/page.html?p=" + encodeURIComponent(info['linkUrl']));
+                    openLinkInBackground(page, tab);
+                }
+            }
+        }, () => {
+            console.log('add link context menu with para');
+            createSelectionContextMenuWithPara();
+        })
+        if (linkContextWithParaId) console.log('link context with para id: ', linkContextWithParaId);
+    }
+    var selectionContextWithParaId;
+    function createSelectionContextMenuWithPara() {
+        selectionContextWithParaId = createContextMenuItem({
+            "title": i18nGetMessage("opensel") + i18nGetMessage("withpa"), "contexts": ["selection"], "onclick": (info, tab) => {
+                console.log(info);
+                console.log(tab);
+                if (info.hasOwnProperty("selectionText")) {
+                    var page = getExtURL("/page.html?p=" + encodeURIComponent(info['selectionText']));
+                    openLinkInBackground(page);
+                }
+            }
+        }, () => {
+            console.log('add selection context menu with para');
+        })
+        if (selectionContextWithParaId) console.log('selection context with para id: ', selectionContextWithParaId);
     }
 }
 window['chrome']['runtime']['onMessage']['addListener']((request, sender, sendResponse) => {

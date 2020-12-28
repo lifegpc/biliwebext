@@ -79,6 +79,18 @@ class cml {
         if (!this.hasOwnProperty("nm") || (this["nm"] != null && typeof (this["nm"]) != "string" && this["nm"] != ""))
             /**@type {string?} 禁用默认下载最高画质。*/
             this["nm"] = null;
+        if (!this.hasOwnProperty("yac") || (this["yac"] != null && typeof (this["yac"]) != "string" && this["yac"] != ""))
+            /**@type {string?} 启用继续下载功能。*/
+            this["yac"] = null;
+        if (!this.hasOwnProperty("nac") || (this["nac"] != null && typeof (this["nac"]) != "string" && this["nac"] != ""))
+            /**@type {string?} 禁用继续下载功能。*/
+            this["nac"] = null;
+        if (!this.hasOwnProperty("ydm") || (this["ydm"] != null && typeof (this["ydm"]) != "string" && this["ydm"] != ""))
+            /**@type {string?} 启用弹幕过滤。*/
+            this["ydm"] = null;
+        if (!this.hasOwnProperty("ndm") || (this["ndm"] != null && typeof (this["ndm"]) != "string" && this["ndm"] != ""))
+            /**@type {string?} 禁用弹幕过滤。*/
+            this["ndm"] = null;
     }
     /**
      * 返回GET参数
@@ -87,7 +99,7 @@ class cml {
     dump() {
         var s = ""
         Object.getOwnPropertyNames(this).forEach((key) => {
-            if (this[key]) {
+            if (this[key] != null) {
                 var temp = encodeURIComponent(key) + "=" + encodeURIComponent(this[key]);
                 s = s == "" ? s + "?" + temp : s + "&" + temp;
             }

@@ -52,5 +52,9 @@ function addCmlPage(cmli) {
     })
     document.getElementById('endownmaxql').innerText = i18nGetMessage("endownmaxq");
     document.getElementById('didownmaxql').innerText = i18nGetMessage("didownmaxq");
+    document.getElementById('encodownl').innerText = i18nGetMessage('encodown');
+    document.getElementById('dicodownl').innerText = i18nGetMessage('dicodown');
+    document.getElementById('enfilterl').innerText = i18nGetMessage('enfilter');
+    document.getElementById('difilterl').innerText = i18nGetMessage('difilter');
     dealWithnc1(cmli);
 }
