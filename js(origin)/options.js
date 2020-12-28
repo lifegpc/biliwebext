@@ -46,7 +46,7 @@ window['chrome']['runtime']['onMessage']['addListener']((request, sender, sendRe
     if (r["event"] == "saveSettingsResult") {
         if (hash && r["hash"] == hash && r["result"]) {
             alert(i18nGetMessage("saveok"));
+            sendResponse(1);
         }
-        sendResponse(1);
     }
 })
