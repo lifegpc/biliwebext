@@ -1,6 +1,13 @@
 [main]
 host = https://www.transifex.com
 
+[bili.bilicommandpot]
+file_filter = bili.command.<lang>.po
+minimum_perc = 0
+source_file = bili.command.pot
+source_lang = en
+type = PO
+
 [bili.webextmanifestpot]
 file_filter = webext.manifest.<lang>.po
 minimum_perc = 0

@@ -91,6 +91,24 @@ class cml {
         if (!this.hasOwnProperty("ndm") || (this["ndm"] != null && typeof (this["ndm"]) != "string" && this["ndm"] != ""))
             /**@type {string?} 禁用弹幕过滤。*/
             this["ndm"] = null;
+        if (!this.hasOwnProperty("yad") || (this["yad"] != null && typeof (this["yad"]) != "string" && this["yad"] != ""))
+            /**@type {string?} 在合并完成后删除无用文件。*/
+            this["yad"] = null;
+        if (!this.hasOwnProperty("nad") || (this["nad"] != null && typeof (this["nad"]) != "string" && this["nad"] != ""))
+            /**@type {string?} 禁用在合并完成后删除无用文件。*/
+            this["nad"] = null;
+        if (!this.hasOwnProperty("yr") || (this["yr"] != null && typeof (this["yr"]) != "string" && this["yr"] != ""))
+            /**@type {string?} 在下载失败后重新下载。*/
+            this["yr"] = null;
+        if (!this.hasOwnProperty("nr") || (this["nr"] != null && typeof (this["nr"]) != "string" && this["nr"] != ""))
+            /**@type {string?} 禁用在下载失败后重新下载。*/
+            this["nr"] = null;
+        if (!this.hasOwnProperty("y") || (this["y"] != null && typeof (this["y"]) != "string" && this["y"] != ""))
+            /**@type {string?} 覆盖所有重复文件*/
+            this["y"] = null;
+        if (!this.hasOwnProperty("n") || (this["n"] != null && typeof (this["n"]) != "string" && this["n"] != ""))
+            /**@type {string?} 不覆盖重复文件*/
+            this["n"] = null;
     }
     /**
      * 返回GET参数

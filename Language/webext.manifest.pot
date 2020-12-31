@@ -94,3 +94,19 @@ msgstr ""
 msgctxt "difilter"
 msgid "Disable filter barrage."
 msgstr ""
+
+msgctxt "endelulf"
+msgid "Enable delete useless files after merge is complete."
+msgstr ""
+
+msgctxt "didelulf"
+msgid "Disable delete useless files after merge is complete."
+msgstr ""
+
+msgctxt "enredown"
+msgid "Enable download again automatically after the download failed."
+msgstr ""
+
+msgctxt "diredown"
+msgid "Disable download again automatically after the download failed."
+msgstr ""

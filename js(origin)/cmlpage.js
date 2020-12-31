@@ -56,5 +56,11 @@ function addCmlPage(cmli) {
     document.getElementById('dicodownl').innerText = i18nGetMessage('dicodown');
     document.getElementById('enfilterl').innerText = i18nGetMessage('enfilter');
     document.getElementById('difilterl').innerText = i18nGetMessage('difilter');
+    document.getElementById('endelulfl').innerText = i18nGetMessage('endelulf');
+    document.getElementById('didelulfl').innerText = i18nGetMessage('didelulf');
+    document.getElementById('enredownl').innerText = i18nGetMessage('enredown');
+    document.getElementById('diredownl').innerText = i18nGetMessage('diredown');
+    document.getElementById('overwril').innerText = i18nGetMessage('overwri');
+    document.getElementById('noverwril').innerText = i18nGetMessage('noverwri');
     dealWithnc1(cmli);
 }

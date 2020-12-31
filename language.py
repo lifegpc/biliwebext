@@ -72,8 +72,8 @@ class main():
         if len(l2) == 1:
             sn2 = 'webext'
         else:
-            sn2 = l2[1]
-        sn = l2[0]
+            sn2 = l2[0]
+        sn = l2[1] if len(l2) > 1 else l2[0]
         key = f"{self._lan}.{sn2}.{sn}"
         if key not in self._temp_dict:
             self._temp_dict[key] = getdict(sn, self._lan, sn2)

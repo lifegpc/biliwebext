@@ -102,3 +102,19 @@ msgstr "启用弹幕过滤。"
 msgctxt "difilter"
 msgid "Disable filter barrage."
 msgstr "禁用弹幕过滤。"
+
+msgctxt "endelulf"
+msgid "Enable delete useless files after merge is complete."
+msgstr "在合并完成后删除无用文件。"
+
+msgctxt "didelulf"
+msgid "Disable delete useless files after merge is complete."
+msgstr "禁用在合并完成后删除无用文件。"
+
+msgctxt "enredown"
+msgid "Enable download again automatically after the download failed."
+msgstr "在下载失败后重新下载。"
+
+msgctxt "diredown"
+msgid "Disable download again automatically after the download failed."
+msgstr "禁用在下载失败后重新下载。"
