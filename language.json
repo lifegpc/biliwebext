@@ -25,4 +25,7 @@
     ,["manifest diredown", "diredown"]
     ,["bili.command O13", "overwri"]
     ,["bili.command O14", "noverwri"]
+    ,["bili.command O15", "useff"]
+    ,["bili.command O16", "nuseff"]
+    ,["bili.command O17", "prefermc"]
 ]

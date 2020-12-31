@@ -46,6 +46,17 @@ function checkP(s) {
     return false;
 }
 /**
+ * 检查偏好编码是否出错
+ * @param {string|undefined} s 输入
+ * @returns {boolean} 输入是否有效
+ */
+function checkMc(s) {
+    if (s == undefined) return false;
+    if (!s.length) return false;
+    if (["avc", "hev"].indexOf(s) > -1) return true;
+    return false;
+}
+/**
  * 命令行参数
  * @class
  * @constructor
@@ -109,6 +120,18 @@ class cml {
         if (!this.hasOwnProperty("n") || (this["n"] != null && typeof (this["n"]) != "string" && this["n"] != ""))
             /**@type {string?} 不覆盖重复文件*/
             this["n"] = null;
+        if (!this.hasOwnProperty("yf") || (this["yf"] != null && typeof (this["yf"]) != "string" && this["yf"] != ""))
+            /**@type {string?} 使用ffmpeg*/
+            this["yf"] = null;
+        if (!this.hasOwnProperty("nf") || (this["nf"] != null && typeof (this["nf"]) != "string" && this["nf"] != ""))
+            /**@type {string?} 不使用ffmpeg*/
+            this["nf"] = null;
+        if (!this.hasOwnProperty("mc") || this["mc"] != null) {
+            var str = this["mc"];
+            if (typeof (this["mc"]) != "string" || !checkMc(str))
+                /**@type {string?} 默认下载最高画质时偏好的视频编码*/
+                this["mc"] = null;
+        }
     }
     /**
      * 返回GET参数
@@ -132,6 +155,16 @@ class cml {
     setP(s) {
         var isVaild = checkP(s);
         if (isVaild) this["p"] = s;
+        return isVaild;
+    }
+    /**
+     * 设置偏好编码并进行检查
+     * @param {string} s 输入
+     * @returns {boolean} 输入是否有效 
+     */
+    setMc(s) {
+        var isVaild = checkMc(s);
+        if (isVaild) this["mc"] = s;
         return isVaild;
     }
 }

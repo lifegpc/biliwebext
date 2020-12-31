@@ -58,9 +58,9 @@ EXIT /B 0
 CALL :GETPREPARE
 %python% prepare.py!para! -c sendMessage.js ContextMenu.js i18n.js string.js cml.js settingsClass.js settings.js tabs.js str.js background.js
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
-%python% prepare.py!para! -c sendMessage.js i18n.js tabs.js str.js string.js cml.js settingsClass.js error.js nc1.js cmlpage.js page.js
+%python% prepare.py!para! -c sendMessage.js i18n.js tabs.js str.js string.js cml.js settingsClass.js error.js nc1.js cws.js cmlpage.js page.js
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
-%python% prepare.py!para! -c sendMessage.js i18n.js string.js cml.js settingsClass.js error.js nc1.js cmlpage.js options.js
+%python% prepare.py!para! -c sendMessage.js i18n.js string.js cml.js settingsClass.js error.js nc1.js cws.js cmlpage.js options.js
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 %python% language.py
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1

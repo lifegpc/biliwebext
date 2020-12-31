@@ -16,6 +16,7 @@
 /// <reference path="define.js" />
 /// <reference path="i18n.js" />
 /// <reference path="cml.js" />
+/// <reference path="cws.js" />
 /// <reference path="error.js" />
 /// <reference path="nc1.js" />
 /**
@@ -62,5 +63,9 @@ function addCmlPage(cmli) {
     document.getElementById('diredownl').innerText = i18nGetMessage('diredown');
     document.getElementById('overwril').innerText = i18nGetMessage('overwri');
     document.getElementById('noverwril').innerText = i18nGetMessage('noverwri');
+    document.getElementById('useffl').innerText = i18nGetMessage('useff');
+    document.getElementById('nuseffl').innerText = i18nGetMessage('nuseff');
+    document.getElementById('prefermcl').innerText = i18nGetMessage('prefermc');
     dealWithnc1(cmli);
+    dealWithcws(cmli);
 }
