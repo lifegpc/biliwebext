@@ -51,6 +51,48 @@ function addCmlPage(cmli) {
         }
         console.log(new cml(cmli));
     })
+    /**@type {HTMLInputElement} 使用aria2c时单个服务器最大连接数*/
+    var armcser = document.getElementById('armcser');
+    armcser.addEventListener('input', () => {
+        if (armcser.value.length) {
+            if (!cmli.setAx(armcser.valueAsNumber)) {
+                cmli["ax"] = null;
+                changeElementColorByError(armcser, true);
+            } else changeElementColorByError(armcser, false);
+        } else {
+            cmli["ax"] = null;
+            changeElementColorByError(armcser, false);
+        }
+        console.log(new cml(cmli));
+    })
+    /**@type {HTMLInputElement} 使用aria2c时单个文件最大连接数。*/
+    var armcfi = document.getElementById('armcfi');
+    armcfi.addEventListener('input', () => {
+        if (armcfi.value.length) {
+            if (!cmli.setAs(armcfi.valueAsNumber)) {
+                cmli["as"] = null;
+                changeElementColorByError(armcfi, true);
+            } else changeElementColorByError(armcfi, false);
+        } else {
+            cmli["as"] = null;
+            changeElementColorByError(armcfi, false);
+        }
+        console.log(new cml(cmli));
+    })
+    /**@type {HTMLInputElement} 使用aria2c时文件分片大小*/
+    var arfisz = document.getElementById('arfisz');
+    arfisz.addEventListener('input', () => {
+        if (arfisz.value.length) {
+            if (!cmli.setAk(arfisz.valueAsNumber)) {
+                cmli["ak"] = null;
+                changeElementColorByError(arfisz, true);
+            } else changeElementColorByError(arfisz, false);
+        } else {
+            cmli["ak"] = null;
+            changeElementColorByError(arfisz, false);
+        }
+        console.log(new cml(cmli));
+    })
     document.getElementById('endownmaxql').innerText = i18nGetMessage("endownmaxq");
     document.getElementById('didownmaxql').innerText = i18nGetMessage("didownmaxq");
     document.getElementById('encodownl').innerText = i18nGetMessage('encodown');
@@ -66,6 +108,11 @@ function addCmlPage(cmli) {
     document.getElementById('useffl').innerText = i18nGetMessage('useff');
     document.getElementById('nuseffl').innerText = i18nGetMessage('nuseff');
     document.getElementById('prefermcl').innerText = i18nGetMessage('prefermc');
+    document.getElementById('usearl').innerText = i18nGetMessage('usear');
+    document.getElementById('nusearl').innerText = i18nGetMessage('nusear');
+    document.getElementById('armcserl').innerText = i18nGetMessageWithReplace('armcser', { 'value': '1-16' });
+    document.getElementById('armcfil').innerText = i18nGetMessageWithReplace('armcfi', { 'value': '1-*' });
+    document.getElementById('arfiszl').innerText = i18nGetMessageWithReplace('arfisz', { 'value1': 'M', 'value2': '1-1024' })
     dealWithnc1(cmli);
     dealWithcws(cmli);
 }

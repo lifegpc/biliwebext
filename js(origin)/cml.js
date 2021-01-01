@@ -57,6 +57,39 @@ function checkMc(s) {
     return false;
 }
 /**
+ * 检查使用aria2c时单个服务器最大连接数
+ * @param {number|undefined} i 输入
+ * @returns {boolean} 输入是否有效
+ */
+function checkAx(i) {
+    if (i == undefined) return false;
+    var a = Math.floor(i);
+    if (a >= 1 && a <= 16) return true;
+    return false;
+}
+/**
+ * 使用aria2c时单个文件最大连接数
+ * @param {number|undefined} n 输入
+ * @returns {boolean} 输入是否有效 
+ */
+function checkAs(n) {
+    if (n == undefined) return false;
+    var a = Math.floor(n);
+    if (a >= 1) return true;
+    return false;
+}
+/**
+ * 使用aria2c时文件分片大小
+ * @param {number|undefined} n 输入
+ * @returns {boolean} 输入是否有效 
+ */
+function checkAk(n) {
+    if (n == undefined) return false;
+    var a = Math.floor(n);
+    if (a >= 1 && a <= 1024) return true;
+    return false;
+}
+/**
  * 命令行参数
  * @class
  * @constructor
@@ -132,6 +165,30 @@ class cml {
                 /**@type {string?} 默认下载最高画质时偏好的视频编码*/
                 this["mc"] = null;
         }
+        if (!this.hasOwnProperty("ar") || (this["ar"] != null && typeof (this["ar"]) != "string" && this["ar"] != ""))
+            /**@type {string?} 使用aria2c下载*/
+            this["ar"] = null;
+        if (!this.hasOwnProperty("nar") || (this["nar"] != null && typeof (this["nar"]) != "string" && this["nar"] != ""))
+            /**@type {string?} 不使用aria2c下载*/
+            this["nar"] = null;
+        if (!this.hasOwnProperty("ax") || this["ax"] != null) {
+            var num = this["ax"];
+            if (typeof (this["ax"]) != "number" || !checkAx(num))
+                /**@type {number?} 使用aria2c时单个服务器最大连接数*/
+                this["ax"] = null;
+        }
+        if (!this.hasOwnProperty("as") || this["as"] != null) {
+            var num = this["as"];
+            if (typeof (this["as"]) != "number" || !checkAs(num))
+                /**@type {number?} 使用aria2c时单个文件最大连接数。*/
+                this["as"] = null;
+        }
+        if (!this.hasOwnProperty("ak") || this["ak"] != null) {
+            var num = this["ak"];
+            if (typeof (this["ak"]) != "number" || !checkAk(num))
+                /**@type {number?} 使用aria2c时文件分片大小*/
+                this["ak"] = null;
+        }
     }
     /**
      * 返回GET参数
@@ -165,6 +222,36 @@ class cml {
     setMc(s) {
         var isVaild = checkMc(s);
         if (isVaild) this["mc"] = s;
+        return isVaild;
+    }
+    /**
+     * 设置使用aria2c时单个服务器最大连接数并进行检查
+     * @param {number} n 输入
+     * @returns {boolean} 输入是否有效 
+     */
+    setAx(n) {
+        var isVaild = checkAx(n);
+        if (isVaild) this["ax"] = Math.floor(n);
+        return isVaild;
+    }
+    /**
+     * 设置使用aria2c时单个文件最大连接数并进行检查
+     * @param {number} n 输入
+     * @returns {boolean} 输入是否有效 
+     */
+    setAs(n) {
+        var isVaild = checkAs(n);
+        if (isVaild) this["as"] = Math.floor(n);
+        return isVaild;
+    }
+    /**
+     * 设置使用aria2c时文件分片大小并进行检查
+     * @param {number} n 输入
+     * @returns {boolean} 输入是否有效
+     */
+    setAk(n) {
+        var isVaild = checkAk(n);
+        if (isVaild) this["ak"] = Math.floor(n);
         return isVaild;
     }
 }

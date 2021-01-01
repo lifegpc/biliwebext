@@ -24,3 +24,26 @@ function i18nGetMessage(messageName, substitutions = [], options = null) {
     var getMessage = window['chrome']['i18n']['getMessage'];
     return chr ? getMessage(messageName, substitutions, options) : getMessage(messageName, substitutions);
 }
+/**
+ * 将消息中的内容替换
+ * @param {string} messageName 消息名称
+ * @param {Object.<string, string>} mapdata 存储要替换的键值对
+ * @param {Array<string>?} substitutions 子消息
+ * @param {{"escapeLt": boolean?}?} options 是否escape <等
+ * @returns {string} 经过翻译的消息
+ */
+function i18nGetMessageWithReplace(messageName, mapdata, substitutions = [], options = null) {
+    var str = i18nGetMessage(messageName, substitutions, options);
+    Object.getOwnPropertyNames(mapdata).forEach((key) => {
+        var key2 = "<" + key + ">";
+        var matched = false;
+        while (str.search(key2) > -1) {
+            matched = true;
+            str = str.replace(key2, mapdata[key]);
+        }
+        if (!matched) {
+            console.warn('Can not find key ', key, ' in message ', messageName);
+        }
+    })
+    return str;
+}
