@@ -90,6 +90,17 @@ function checkAk(n) {
     return false;
 }
 /**
+ * 使用aria2c下载时文件预分配方式
+ * @param {string|undefined} s 输入
+ * @returns {boolean} 输入是否有效
+ */
+function checkFa(s) {
+    if (s == undefined) return false;
+    if (!s.length) return false;
+    if (["none", "prealloc", "trunc", "falloc"].indexOf(s) > -1) return true;
+    return false;
+}
+/**
  * 命令行参数
  * @class
  * @constructor
@@ -189,6 +200,18 @@ class cml {
                 /**@type {number?} 使用aria2c时文件分片大小*/
                 this["ak"] = null;
         }
+        if (!this.hasOwnProperty("ab") || (this["ab"] != null && typeof (this["ab"]) != "string" && this["ab"] != ""))
+            /**@type {string?} 在使用aria2c下载时使用备用网址*/
+            this["ab"] = null;
+        if (!this.hasOwnProperty("nab") || (this["nab"] != null && typeof (this["nab"]) != "string" && this["nab"] != ""))
+            /**@type {string?} 在使用aria2c下载时不使用备用网址*/
+            this["nab"] = null;
+        if (!this.hasOwnProperty("fa") || this["fa"] != null) {
+            var str = this["fa"];
+            if (typeof (this["fa"]) != "string" || !checkFa(str))
+                /**@type {string?} 使用aria2c下载时文件预分配方式*/
+                this["fa"] = null;
+        }
     }
     /**
      * 返回GET参数
@@ -253,6 +276,16 @@ class cml {
         var isVaild = checkAk(n);
         if (isVaild) this["ak"] = Math.floor(n);
         return isVaild;
+    }
+    /**
+     * 设置使用aria2c下载时文件预分配方式并进行检查
+     * @param {string} s 输入
+     * @returns {boolean} 输入是否有效
+     */
+    setFa(s) {
+        var isValid = checkFa(s);
+        if (isValid) this["fa"] = s;
+        return isValid;
     }
 }
 const cmlparalist = Object.getOwnPropertyNames(new cml(undefined, true));

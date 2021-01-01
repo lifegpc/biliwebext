@@ -33,4 +33,7 @@
     ,["bili.command O20", "armcser"]
     ,["bili.command O21", "armcfi"]
     ,["bili.command O22", "arfisz"]
+    ,["bili.command O23", "arusebk"]
+    ,["bili.command O24", "arnusebk"]
+    ,["bili.command O25", "aralloc"]
 ]

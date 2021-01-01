@@ -19,6 +19,7 @@
 /// <reference path="cws.js" />
 /// <reference path="error.js" />
 /// <reference path="nc1.js" />
+/// <reference path="labelassoc.js" />
 /**
  * 命令行设置页面准备
  * @param {cml} cmli 命令行设置
@@ -113,6 +114,10 @@ function addCmlPage(cmli) {
     document.getElementById('armcserl').innerText = i18nGetMessageWithReplace('armcser', { 'value': '1-16' });
     document.getElementById('armcfil').innerText = i18nGetMessageWithReplace('armcfi', { 'value': '1-*' });
     document.getElementById('arfiszl').innerText = i18nGetMessageWithReplace('arfisz', { 'value1': 'M', 'value2': '1-1024' })
+    document.getElementById('arusebkl').innerText = i18nGetMessage('arusebk');
+    document.getElementById('arnusebkl').innerText = i18nGetMessage('arnusebk');
+    document.getElementById('arallocl').innerText = i18nGetMessage('aralloc');
     dealWithnc1(cmli);
     dealWithcws(cmli);
+    assocLabelWithCheckBox();
 }

@@ -20,6 +20,16 @@
  * @param {cml} cmli
  */
 function dealWithcws(cmli) {
+    /**
+     * 写入数据
+     * @param {string} key 写入到cml的key
+     * @param {string} value 值
+     */
+    function setValue(key, value) {
+        if (key == "mc") cmli.setMc(value);
+        else if (key == "fa") cmli.setFa(value)
+        else cmli[key] = value;
+    }
     var list = document.getElementsByClassName('cws');
     /**@type {string[]} */
     var list2 = [];
@@ -55,8 +65,7 @@ function dealWithcws(cmli) {
         input.addEventListener('input', () => {
             if (input.checked) {
                 select.disabled = false;
-                if (key == "mc") cmli.setMc(select.value);
-                else cmli[key] = select.value;
+                setValue(key, select.value);
             } else {
                 select.disabled = true;
                 cmli[key] = null;
@@ -64,8 +73,7 @@ function dealWithcws(cmli) {
             console.log(new cml(cmli));
         });
         select.addEventListener('input', () => {
-            if (key == "mc") cmli.setMc(select.value);
-            else cmli[key] = select.value;
+            setValue(key, select.value);
             console.log(new cml(cmli));
         })
     })
