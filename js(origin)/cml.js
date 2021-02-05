@@ -101,6 +101,16 @@ function checkFa(s) {
     return false;
 }
 /**
+ * 在使用aria2c时最大总体速度
+ * @param {string|undefined} s 输入
+ * @returns {boolean} 输入是否有效 
+ */
+function checkMs(s) {
+    if (s == undefined || !s.length) return false;
+    if (s.match(/^[0-9]+([KM])?$/)) return true;
+    return false;
+}
+/**
  * 命令行参数
  * @class
  * @constructor
@@ -224,6 +234,12 @@ class cml {
         if (!this.hasOwnProperty("nma") || (this["nma"] != null && typeof (this["nma"]) != "string" && this["nma"] != ""))
             /**@type {string?} 不强制增加视频元数据*/
             this["nma"] = null;
+        if (!this.hasOwnProperty("ms") || this["ms"] != null) {
+            var str = this["ms"];
+            if (typeof (this["ms"]) != "string" || !checkMs(str))
+                /**@type {string?} 在使用aria2c时最大总体速度*/
+                this["ms"] = null;
+        }
     }
     /**
      * 返回GET参数
@@ -298,6 +314,16 @@ class cml {
         var isValid = checkFa(s);
         if (isValid) this["fa"] = s;
         return isValid;
+    }
+    /**
+     * 设置在使用aria2c时最大总体速度
+     * @param {string} s 输入
+     * @returns {boolean} 输入是否有效
+     */
+    setMs(s) {
+        var isVaild = checkMs(s);
+        if (isVaild) this["ms"] = s;
+        return isVaild;
     }
 }
 const cmlparalist = Object.getOwnPropertyNames(new cml(undefined, true));

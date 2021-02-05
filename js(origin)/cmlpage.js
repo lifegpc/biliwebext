@@ -94,6 +94,20 @@ function addCmlPage(cmli) {
         }
         console.log(new cml(cmli));
     })
+    /**@type {HTMLInputElement} 在使用aria2c时最大总体速度*/
+    var armaxsp = document.getElementById('armaxsp');
+    armaxsp.addEventListener('input', () => {
+        if (armaxsp.value.length) {
+            if (!cmli.setMs(armaxsp.value)) {
+                cmli["ms"] = null;
+                changeElementColorByError(armaxsp, true);
+            } else changeElementColorByError(armaxsp, false);
+        } else {
+            cmli["ms"] = null;
+            changeElementColorByError(armaxsp, false);
+        }
+        console.log(new cml(cmli));
+    })
     document.getElementById('endownmaxql').innerText = i18nGetMessage("endownmaxq");
     document.getElementById('didownmaxql').innerText = i18nGetMessage("didownmaxq");
     document.getElementById('encodownl').innerText = i18nGetMessage('encodown');
@@ -121,6 +135,7 @@ function addCmlPage(cmli) {
     document.getElementById('diusevdl').innerText = i18nGetMessage('diusevd');
     document.getElementById('enaddmetal').innerText = i18nGetMessage('enaddmeta');
     document.getElementById('diaddmetal').innerText = i18nGetMessage('diaddmeta');
+    document.getElementById('armaxspl').innerText = i18nGetMessage('armaxsp');
     dealWithnc1(cmli);
     dealWithcws(cmli);
     assocLabelWithCheckBox();
