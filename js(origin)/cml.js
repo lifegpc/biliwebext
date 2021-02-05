@@ -212,6 +212,18 @@ class cml {
                 /**@type {string?} 使用aria2c下载时文件预分配方式*/
                 this["fa"] = null;
         }
+        if (!this.hasOwnProperty("ysv") || (this["ysv"] != null && typeof (this["ysv"]) != "string" && this["ysv"] != ""))
+            /**@type {string?} 在文件名中输出视频画质信息*/
+            this["ysv"] = null;
+        if (!this.hasOwnProperty("nsv") || (this["nsv"] != null && typeof (this["nsv"]) != "string" && this["nsv"] != ""))
+            /**@type {string?} 不在文件名中输出视频画质信息*/
+            this["nsv"] = null;
+        if (!this.hasOwnProperty("yma") || (this["yma"] != null && typeof (this["yma"]) != "string" && this["yma"] != ""))
+            /**@type {string?} 强制增加视频元数据（这会使视频被转码，转码不会影响画质）*/
+            this["yma"] = null;
+        if (!this.hasOwnProperty("nma") || (this["nma"] != null && typeof (this["nma"]) != "string" && this["nma"] != ""))
+            /**@type {string?} 不强制增加视频元数据*/
+            this["nma"] = null;
     }
     /**
      * 返回GET参数

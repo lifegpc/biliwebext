@@ -110,3 +110,19 @@ msgstr ""
 msgctxt "diredown"
 msgid "Disable download again automatically after the download failed."
 msgstr ""
+
+msgctxt "enusevd"
+msgid "Put video/audio quality information in the file name."
+msgstr ""
+
+msgctxt "diusevd"
+msgid "Do not put video/audio quality information in the file name."
+msgstr ""
+
+msgctxt "enaddmeta"
+msgid "Add video information to file forcibly. (This will transcode the video and transcoding will not affect the video/audio quality.)"
+msgstr ""
+
+msgctxt "diaddmeta"
+msgid "Do not add video information to file forcibly."
+msgstr ""

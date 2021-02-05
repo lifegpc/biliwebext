@@ -117,6 +117,10 @@ function addCmlPage(cmli) {
     document.getElementById('arusebkl').innerText = i18nGetMessage('arusebk');
     document.getElementById('arnusebkl').innerText = i18nGetMessage('arnusebk');
     document.getElementById('arallocl').innerText = i18nGetMessage('aralloc');
+    document.getElementById('enusevdl').innerText = i18nGetMessage('enusevd');
+    document.getElementById('diusevdl').innerText = i18nGetMessage('diusevd');
+    document.getElementById('enaddmetal').innerText = i18nGetMessage('enaddmeta');
+    document.getElementById('diaddmetal').innerText = i18nGetMessage('diaddmeta');
     dealWithnc1(cmli);
     dealWithcws(cmli);
     assocLabelWithCheckBox();

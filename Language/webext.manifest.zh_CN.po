@@ -4,14 +4,14 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # Translators:
-# 1 q <g1710431395@gmail.com>, 2020
+# 1 q <g1710431395@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: bili\n"
 "POT-Creation-Date: 2020-08-10 05:08:00+0000\n"
 "PO-Revision-Date: 2020-12-25 04:51+0000\n"
-"Last-Translator: 1 q <g1710431395@gmail.com>, 2020\n"
+"Last-Translator: 1 q <g1710431395@gmail.com>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/lifegpc/teams/111556/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -118,3 +118,21 @@ msgstr "在下载失败后重新下载。"
 msgctxt "diredown"
 msgid "Disable download again automatically after the download failed."
 msgstr "禁用在下载失败后重新下载。"
+
+msgctxt "enusevd"
+msgid "Put video/audio quality information in the file name."
+msgstr "在文件名中输出视频画质信息。"
+
+msgctxt "diusevd"
+msgid "Do not put video/audio quality information in the file name."
+msgstr "不在文件名中输出视频画质信息。"
+
+msgctxt "enaddmeta"
+msgid ""
+"Add video information to file forcibly. (This will transcode the video and "
+"transcoding will not affect the video/audio quality.)"
+msgstr "强制增加视频元数据（这会使视频被转码，转码不会影响画质）"
+
+msgctxt "diaddmeta"
+msgid "Do not add video information to file forcibly."
+msgstr "不强制增加视频元数据"

@@ -36,4 +36,8 @@
     ,["bili.command O23", "arusebk"]
     ,["bili.command O24", "arnusebk"]
     ,["bili.command O25", "aralloc"]
+    ,["manifest enusevd", "enusevd"]
+    ,["manifest diusevd", "diusevd"]
+    ,["manifest enaddmeta", "enaddmeta"]
+    ,["manifest diaddmeta", "diaddmeta"]
 ]
