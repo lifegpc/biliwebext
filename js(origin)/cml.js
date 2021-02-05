@@ -240,6 +240,12 @@ class cml {
                 /**@type {string?} 在使用aria2c时最大总体速度*/
                 this["ms"] = null;
         }
+        if (!this.hasOwnProperty("yda") || (this["yda"] != null && typeof (this["yda"]) != "string" && this["yda"] != ""))
+            /**@type {string?} 当输入收藏夹/频道/投稿链接时自动下载每一个视频的所有分P*/
+            this["yda"] = null;
+        if (!this.hasOwnProperty("nda") || (this["nda"] != null && typeof (this["nda"]) != "string" && this["nda"] != ""))
+            /**@type {string?} 当输入收藏夹/频道/投稿链接时不自动下载每一个视频的所有分P*/
+            this["nda"] = null;
     }
     /**
      * 返回GET参数

@@ -41,4 +41,6 @@
     ,["manifest enaddmeta", "enaddmeta"]
     ,["manifest diaddmeta", "diaddmeta"]
     ,["bili.command O28", "armaxsp"]
+    ,["manifest enallpart", "enallpart"]
+    ,["manifest diallpart", "diallpart"]
 ]

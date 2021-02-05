@@ -136,6 +136,8 @@ function addCmlPage(cmli) {
     document.getElementById('enaddmetal').innerText = i18nGetMessage('enaddmeta');
     document.getElementById('diaddmetal').innerText = i18nGetMessage('diaddmeta');
     document.getElementById('armaxspl').innerText = i18nGetMessage('armaxsp');
+    document.getElementById('enallpartl').innerText = i18nGetMessage('enallpart');
+    document.getElementById('diallpartl').innerText = i18nGetMessage('diallpart');
     dealWithnc1(cmli);
     dealWithcws(cmli);
     assocLabelWithCheckBox();

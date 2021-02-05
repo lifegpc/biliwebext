@@ -136,3 +136,15 @@ msgstr "强制增加视频元数据（这会使视频被转码，转码不会影
 msgctxt "diaddmeta"
 msgid "Do not add video information to file forcibly."
 msgstr "不强制增加视频元数据"
+
+msgctxt "enallpart"
+msgid ""
+"Enable \"download all parts of each video automatically\" when inputing "
+"Favorites, Channels, Uploaded Video page link."
+msgstr "当输入收藏夹/频道/投稿链接时自动下载每一个视频的所有分P"
+
+msgctxt "diallpart"
+msgid ""
+"Disable \"download all parts of each video automatically\" when inputing "
+"Favorites, Channels, Uploaded Video page link."
+msgstr "当输入收藏夹/频道/投稿链接时不自动下载每一个视频的所有分P"
