@@ -111,6 +111,37 @@ function checkMs(s) {
     return false;
 }
 /**
+ * 下载全弹幕时两次抓取之间的天数
+ * @param {string|undefined} s 输入
+ * @returns {boolean} 输入是否有效
+ */
+function checkJt(s) {
+    if (s == undefined || !s.length) return false;
+    if (s == "a" || s == "b") return true;
+    if (stringIsNumber(s)) {
+        var i = parseInt(s);
+        if (i >= 1 && i <= 365) return true;
+    }
+    return false;
+}
+/**
+ * 下载全弹幕时且视频为番剧时抓取起始日期的默认值
+ * @param {string|undefined} s 输入
+ * @returns {boolean} 输入是否有效
+ */
+function checkJts(s) {
+    if (s == undefined || !s.length) return false;
+    var re = s.match(/^([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})$/);
+    if (re) {
+        var year = parseInt(re[1]);
+        var month = parseInt(re[2]) - 1;
+        var day = parseInt(re[3]);
+        var date = new Date(year, month, day);
+        if (year == date.getFullYear() && month == date.getMonth() && day == date.getDate()) return true;
+    }
+    return false;
+}
+/**
  * 命令行参数
  * @class
  * @constructor
@@ -252,6 +283,18 @@ class cml {
         if (!this.hasOwnProperty("httpsproxy") || (this["httpsproxy"] != null && typeof (this["httpsproxy"]) != "string"))
             /**@type {string?} 使用HTTPS代理（该设置不会影响aria2c）*/
             this["httpsproxy"] = null;
+        if (!this.hasOwnProperty("jt") || this["jt"] != null) {
+            var str = this["jt"];
+            if (typeof (this["jt"]) != "string" || !checkJt(str))
+                /**@type {string?} 下载全弹幕时两次抓取之间的天数*/
+                this["jt"] = null;
+        }
+        if (!this.hasOwnProperty("jts") || this["jts"] != null) {
+            var str = this["jts"];
+            if (typeof (this["jts"]) != "string" || !checkJts(str))
+                /**@type {string?} 下载全弹幕时且视频为番剧时抓取起始日期的默认值*/
+                this["jts"] = null;
+        }
     }
     /**
      * 返回GET参数
@@ -335,6 +378,26 @@ class cml {
     setMs(s) {
         var isVaild = checkMs(s);
         if (isVaild) this["ms"] = s;
+        return isVaild;
+    }
+    /**
+     * 设置下载全弹幕时两次抓取之间的天数
+     * @param {string} s 输入
+     * @returns {boolean} 输入是否有效
+     */
+    setJt(s) {
+        var isVaild = checkJt(s);
+        if (isVaild) this["jt"] = s;
+        return isVaild;
+    }
+    /**
+     * 设置下载全弹幕时且视频为番剧时抓取起始日期的默认值
+     * @param {string} s 输入
+     * @returns {boolean} 输入是否有效
+     */
+    setJts(s) {
+        var isVaild = checkJts(s);
+        if (isVaild) this["jts"] = s;
         return isVaild;
     }
 }

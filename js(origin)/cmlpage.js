@@ -109,6 +109,34 @@ function addCmlPage(cmli) {
         }
         console.log(new cml(cmli));
     })
+    /**@type {HTMLInputElement} 下载全弹幕时两次抓取之间的天数*/
+    var jtint = document.getElementById('jtint');
+    jtint.addEventListener('input', () => {
+        if (jtint.value.length) {
+            if (!cmli.setJt(jtint.value)) {
+                cmli["jt"] = null;
+                changeElementColorByError(jtint, true);
+            } else changeElementColorByError(jtint, false);
+        } else {
+            cmli["jt"] = null;
+            changeElementColorByError(jtint, false);
+        }
+        console.log(new cml(cmli));
+    })
+    /**@type {HTMLInputElement} 下载全弹幕时且视频为番剧时抓取起始日期的默认值*/
+    var jtsdate = document.getElementById('jtsdate');
+    jtsdate.addEventListener('input', () => {
+        if (jtsdate.value.length) {
+            if (!cmli.setJts(jtsdate.value)) {
+                cmli["jts"] = null;
+                changeElementColorByError(jtsdate, true);
+            } else changeElementColorByError(jtsdate, false);
+        } else {
+            cmli["jts"] = null;
+            changeElementColorByError(jtsdate, false);
+        }
+        console.log(new cml(cmli));
+    })
     document.getElementById('endownmaxql').innerText = i18nGetMessage("endownmaxq");
     document.getElementById('didownmaxql').innerText = i18nGetMessage("didownmaxq");
     document.getElementById('encodownl').innerText = i18nGetMessage('encodown');
@@ -141,6 +169,8 @@ function addCmlPage(cmli) {
     document.getElementById('diallpartl').innerText = i18nGetMessage('diallpart');
     document.getElementById('httpprol').innerText = i18nGetMessage('httppro') + i18nGetMessage('noeffar');
     document.getElementById('httpsprol').innerText = i18nGetMessage('httpspro') + i18nGetMessage('noeffar');
+    document.getElementById('jtintl').innerText = i18nGetMessageWithReplace('jtint', { 'value': '1-365' });
+    document.getElementById('jtsdatel').innerText = i18nGetMessage('jtsdate');
     dealWithnc1(cmli);
     dealWithcws(cmli);
     dealWithSimpleInput(cmli);

@@ -46,4 +46,6 @@
     ,["bili.command O30", "httppro"]
     ,["bili.command O31", "noeffar"]
     ,["bili.command O32", "httpspro"]
+    ,["bili.command O33", "jtint"]
+    ,["bili.command O34", "jtsdate"]
 ]
