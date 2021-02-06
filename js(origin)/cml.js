@@ -246,6 +246,12 @@ class cml {
         if (!this.hasOwnProperty("nda") || (this["nda"] != null && this["nda"] !== ""))
             /**@type {string?} 当输入收藏夹/频道/投稿链接时不自动下载每一个视频的所有分P*/
             this["nda"] = null;
+        if (!this.hasOwnProperty("httpproxy") || (this["httpproxy"] != null && typeof (this["httpproxy"]) != "string"))
+            /**@type {string?} 使用HTTP代理（该设置不会影响aria2c）*/
+            this["httpproxy"] = null;
+        if (!this.hasOwnProperty("httpsproxy") || (this["httpsproxy"] != null && typeof (this["httpsproxy"]) != "string"))
+            /**@type {string?} 使用HTTPS代理（该设置不会影响aria2c）*/
+            this["httpsproxy"] = null;
     }
     /**
      * 返回GET参数

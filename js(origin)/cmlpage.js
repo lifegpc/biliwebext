@@ -20,6 +20,7 @@
 /// <reference path="error.js" />
 /// <reference path="nc1.js" />
 /// <reference path="labelassoc.js" />
+/// <reference path="simpleinput.js" />
 /**
  * 命令行设置页面准备
  * @param {cml} cmli 命令行设置
@@ -138,7 +139,10 @@ function addCmlPage(cmli) {
     document.getElementById('armaxspl').innerText = i18nGetMessage('armaxsp');
     document.getElementById('enallpartl').innerText = i18nGetMessage('enallpart');
     document.getElementById('diallpartl').innerText = i18nGetMessage('diallpart');
+    document.getElementById('httpprol').innerText = i18nGetMessage('httppro') + i18nGetMessage('noeffar');
+    document.getElementById('httpsprol').innerText = i18nGetMessage('httpspro') + i18nGetMessage('noeffar');
     dealWithnc1(cmli);
     dealWithcws(cmli);
+    dealWithSimpleInput(cmli);
     assocLabelWithCheckBox();
 }
