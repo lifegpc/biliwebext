@@ -138,46 +138,46 @@ class cml {
                 /**@type {string?} P数*/
                 this["p"] = null;
         }
-        if (!this.hasOwnProperty("ym") || (this["ym"] != null && typeof (this["ym"]) != "string" && this["ym"] != ""))
+        if (!this.hasOwnProperty("ym") || (this["ym"] != null && this["ym"] !== ""))
             /**@type {string?} 默认下载最高画质。*/
             this["ym"] = null;
-        if (!this.hasOwnProperty("nm") || (this["nm"] != null && typeof (this["nm"]) != "string" && this["nm"] != ""))
+        if (!this.hasOwnProperty("nm") || (this["nm"] != null && this["nm"] !== ""))
             /**@type {string?} 禁用默认下载最高画质。*/
             this["nm"] = null;
-        if (!this.hasOwnProperty("yac") || (this["yac"] != null && typeof (this["yac"]) != "string" && this["yac"] != ""))
+        if (!this.hasOwnProperty("yac") || (this["yac"] != null && this["yac"] !== ""))
             /**@type {string?} 启用继续下载功能。*/
             this["yac"] = null;
-        if (!this.hasOwnProperty("nac") || (this["nac"] != null && typeof (this["nac"]) != "string" && this["nac"] != ""))
+        if (!this.hasOwnProperty("nac") || (this["nac"] != null && this["nac"] !== ""))
             /**@type {string?} 禁用继续下载功能。*/
             this["nac"] = null;
-        if (!this.hasOwnProperty("ydm") || (this["ydm"] != null && typeof (this["ydm"]) != "string" && this["ydm"] != ""))
+        if (!this.hasOwnProperty("ydm") || (this["ydm"] != null && this["ydm"] !== ""))
             /**@type {string?} 启用弹幕过滤。*/
             this["ydm"] = null;
-        if (!this.hasOwnProperty("ndm") || (this["ndm"] != null && typeof (this["ndm"]) != "string" && this["ndm"] != ""))
+        if (!this.hasOwnProperty("ndm") || (this["ndm"] != null && this["ndm"] !== ""))
             /**@type {string?} 禁用弹幕过滤。*/
             this["ndm"] = null;
-        if (!this.hasOwnProperty("yad") || (this["yad"] != null && typeof (this["yad"]) != "string" && this["yad"] != ""))
+        if (!this.hasOwnProperty("yad") || (this["yad"] != null && this["yad"] !== ""))
             /**@type {string?} 在合并完成后删除无用文件。*/
             this["yad"] = null;
-        if (!this.hasOwnProperty("nad") || (this["nad"] != null && typeof (this["nad"]) != "string" && this["nad"] != ""))
+        if (!this.hasOwnProperty("nad") || (this["nad"] != null && this["nad"] !== ""))
             /**@type {string?} 禁用在合并完成后删除无用文件。*/
             this["nad"] = null;
-        if (!this.hasOwnProperty("yr") || (this["yr"] != null && typeof (this["yr"]) != "string" && this["yr"] != ""))
+        if (!this.hasOwnProperty("yr") || (this["yr"] != null && this["yr"] !== ""))
             /**@type {string?} 在下载失败后重新下载。*/
             this["yr"] = null;
-        if (!this.hasOwnProperty("nr") || (this["nr"] != null && typeof (this["nr"]) != "string" && this["nr"] != ""))
+        if (!this.hasOwnProperty("nr") || (this["nr"] != null && this["nr"] !== ""))
             /**@type {string?} 禁用在下载失败后重新下载。*/
             this["nr"] = null;
-        if (!this.hasOwnProperty("y") || (this["y"] != null && typeof (this["y"]) != "string" && this["y"] != ""))
+        if (!this.hasOwnProperty("y") || (this["y"] != null && this["y"] !== ""))
             /**@type {string?} 覆盖所有重复文件*/
             this["y"] = null;
-        if (!this.hasOwnProperty("n") || (this["n"] != null && typeof (this["n"]) != "string" && this["n"] != ""))
+        if (!this.hasOwnProperty("n") || (this["n"] != null && this["n"] !== ""))
             /**@type {string?} 不覆盖重复文件*/
             this["n"] = null;
-        if (!this.hasOwnProperty("yf") || (this["yf"] != null && typeof (this["yf"]) != "string" && this["yf"] != ""))
+        if (!this.hasOwnProperty("yf") || (this["yf"] != null && this["yf"] !== ""))
             /**@type {string?} 使用ffmpeg*/
             this["yf"] = null;
-        if (!this.hasOwnProperty("nf") || (this["nf"] != null && typeof (this["nf"]) != "string" && this["nf"] != ""))
+        if (!this.hasOwnProperty("nf") || (this["nf"] != null && this["nf"] !== ""))
             /**@type {string?} 不使用ffmpeg*/
             this["nf"] = null;
         if (!this.hasOwnProperty("mc") || this["mc"] != null) {
@@ -186,10 +186,10 @@ class cml {
                 /**@type {string?} 默认下载最高画质时偏好的视频编码*/
                 this["mc"] = null;
         }
-        if (!this.hasOwnProperty("ar") || (this["ar"] != null && typeof (this["ar"]) != "string" && this["ar"] != ""))
+        if (!this.hasOwnProperty("ar") || (this["ar"] != null && this["ar"] !== ""))
             /**@type {string?} 使用aria2c下载*/
             this["ar"] = null;
-        if (!this.hasOwnProperty("nar") || (this["nar"] != null && typeof (this["nar"]) != "string" && this["nar"] != ""))
+        if (!this.hasOwnProperty("nar") || (this["nar"] != null && this["nar"] !== ""))
             /**@type {string?} 不使用aria2c下载*/
             this["nar"] = null;
         if (!this.hasOwnProperty("ax") || this["ax"] != null) {
@@ -210,10 +210,10 @@ class cml {
                 /**@type {number?} 使用aria2c时文件分片大小*/
                 this["ak"] = null;
         }
-        if (!this.hasOwnProperty("ab") || (this["ab"] != null && typeof (this["ab"]) != "string" && this["ab"] != ""))
+        if (!this.hasOwnProperty("ab") || (this["ab"] != null && this["ab"] !== ""))
             /**@type {string?} 在使用aria2c下载时使用备用网址*/
             this["ab"] = null;
-        if (!this.hasOwnProperty("nab") || (this["nab"] != null && typeof (this["nab"]) != "string" && this["nab"] != ""))
+        if (!this.hasOwnProperty("nab") || (this["nab"] != null && this["nab"] !== ""))
             /**@type {string?} 在使用aria2c下载时不使用备用网址*/
             this["nab"] = null;
         if (!this.hasOwnProperty("fa") || this["fa"] != null) {
@@ -222,16 +222,16 @@ class cml {
                 /**@type {string?} 使用aria2c下载时文件预分配方式*/
                 this["fa"] = null;
         }
-        if (!this.hasOwnProperty("ysv") || (this["ysv"] != null && typeof (this["ysv"]) != "string" && this["ysv"] != ""))
+        if (!this.hasOwnProperty("ysv") || (this["ysv"] != null && this["ysv"] !== ""))
             /**@type {string?} 在文件名中输出视频画质信息*/
             this["ysv"] = null;
-        if (!this.hasOwnProperty("nsv") || (this["nsv"] != null && typeof (this["nsv"]) != "string" && this["nsv"] != ""))
+        if (!this.hasOwnProperty("nsv") || (this["nsv"] != null && this["nsv"] !== ""))
             /**@type {string?} 不在文件名中输出视频画质信息*/
             this["nsv"] = null;
-        if (!this.hasOwnProperty("yma") || (this["yma"] != null && typeof (this["yma"]) != "string" && this["yma"] != ""))
+        if (!this.hasOwnProperty("yma") || (this["yma"] != null && this["yma"] !== ""))
             /**@type {string?} 强制增加视频元数据（这会使视频被转码，转码不会影响画质）*/
             this["yma"] = null;
-        if (!this.hasOwnProperty("nma") || (this["nma"] != null && typeof (this["nma"]) != "string" && this["nma"] != ""))
+        if (!this.hasOwnProperty("nma") || (this["nma"] != null && this["nma"] !== ""))
             /**@type {string?} 不强制增加视频元数据*/
             this["nma"] = null;
         if (!this.hasOwnProperty("ms") || this["ms"] != null) {
@@ -240,10 +240,10 @@ class cml {
                 /**@type {string?} 在使用aria2c时最大总体速度*/
                 this["ms"] = null;
         }
-        if (!this.hasOwnProperty("yda") || (this["yda"] != null && typeof (this["yda"]) != "string" && this["yda"] != ""))
+        if (!this.hasOwnProperty("yda") || (this["yda"] != null && this["yda"] !== ""))
             /**@type {string?} 当输入收藏夹/频道/投稿链接时自动下载每一个视频的所有分P*/
             this["yda"] = null;
-        if (!this.hasOwnProperty("nda") || (this["nda"] != null && typeof (this["nda"]) != "string" && this["nda"] != ""))
+        if (!this.hasOwnProperty("nda") || (this["nda"] != null && this["nda"] !== ""))
             /**@type {string?} 当输入收藏夹/频道/投稿链接时不自动下载每一个视频的所有分P*/
             this["nda"] = null;
     }
