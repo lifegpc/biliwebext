@@ -32,6 +32,7 @@ function dealWithSimpleInput(cmli) {
             else console.warn('Can not find "', key, '" in cml: ', item);
             return;
         }
+        if (cmli[key] != null) item.value = cmli[key];
         item.addEventListener('input', () => {
             cmli[key] = item.value.length ? item.value : null;
             console.log(new cml(cmli));

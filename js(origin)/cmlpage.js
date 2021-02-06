@@ -55,6 +55,7 @@ function addCmlPage(cmli) {
     })
     /**@type {HTMLInputElement} 使用aria2c时单个服务器最大连接数*/
     var armcser = document.getElementById('armcser');
+    if (cmli["ax"] != null) armcser.value = cmli["ax"];
     armcser.addEventListener('input', () => {
         if (armcser.value.length) {
             if (!cmli.setAx(armcser.valueAsNumber)) {
@@ -69,6 +70,7 @@ function addCmlPage(cmli) {
     })
     /**@type {HTMLInputElement} 使用aria2c时单个文件最大连接数。*/
     var armcfi = document.getElementById('armcfi');
+    if (cmli["as"] != null) armcfi.value = cmli["as"];
     armcfi.addEventListener('input', () => {
         if (armcfi.value.length) {
             if (!cmli.setAs(armcfi.valueAsNumber)) {
@@ -83,6 +85,7 @@ function addCmlPage(cmli) {
     })
     /**@type {HTMLInputElement} 使用aria2c时文件分片大小*/
     var arfisz = document.getElementById('arfisz');
+    if (cmli["ak"] != null) arfisz.value = cmli["ak"];
     arfisz.addEventListener('input', () => {
         if (arfisz.value.length) {
             if (!cmli.setAk(arfisz.valueAsNumber)) {
@@ -97,6 +100,7 @@ function addCmlPage(cmli) {
     })
     /**@type {HTMLInputElement} 在使用aria2c时最大总体速度*/
     var armaxsp = document.getElementById('armaxsp');
+    if (cmli["ms"] != null) armaxsp.value = cmli["ms"];
     armaxsp.addEventListener('input', () => {
         if (armaxsp.value.length) {
             if (!cmli.setMs(armaxsp.value)) {
@@ -111,6 +115,7 @@ function addCmlPage(cmli) {
     })
     /**@type {HTMLInputElement} 下载全弹幕时两次抓取之间的天数*/
     var jtint = document.getElementById('jtint');
+    if (cmli["jt"] != null) jtint.value = cmli["jt"];
     jtint.addEventListener('input', () => {
         if (jtint.value.length) {
             if (!cmli.setJt(jtint.value)) {
@@ -125,6 +130,7 @@ function addCmlPage(cmli) {
     })
     /**@type {HTMLInputElement} 下载全弹幕时且视频为番剧时抓取起始日期的默认值*/
     var jtsdate = document.getElementById('jtsdate');
+    if (cmli["jts"] != null) jtsdate.value = cmli["jts"];
     jtsdate.addEventListener('input', () => {
         if (jtsdate.value.length) {
             if (!cmli.setJts(jtsdate.value)) {

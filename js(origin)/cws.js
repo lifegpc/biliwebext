@@ -61,6 +61,10 @@ function dealWithcws(cmli) {
         }
         var input = map[key];
         var select = map2[key];
+        if (cmli[key] != null) {
+            input.checked = true;
+            select.value = cmli[key];
+        }
         input.checked ? select.disabled = false : select.disabled = true;
         input.addEventListener('input', () => {
             if (input.checked) {
