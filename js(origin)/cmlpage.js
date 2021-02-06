@@ -143,6 +143,39 @@ function addCmlPage(cmli) {
         }
         console.log(new cml(cmli));
     })
+    /**@type {HTMLInputElement} 按索引选择画质*/
+    var videoind = document.getElementById('videoind');
+    if (cmli["v"] != null) videoind.value = cmli["v"];
+    videoind.addEventListener('input', () => {
+        if (videoind.value.length) {
+            if (!cmli.setV(videoind.valueAsNumber)) cmli["v"] = null;
+        } else cmli["v"] = null;
+        console.log(new cml(cmli));
+    })
+    /**@type {HTMLInputElement} 按索引选择音质*/
+    var audioind = document.getElementById('audioind');
+    if (cmli["a"] != null) audioind.value = cmli["a"];
+    audioind.addEventListener('input', () => {
+        if (audioind.value.length) {
+            if (!cmli.setA(audioind.valueAsNumber)) cmli["a"] = null;
+        } else cmli["a"] = null;
+        console.log(new cml(cmli));
+    })
+    /**@type {HTMLInputElement} 下载文件夹位置*/
+    var downloc = document.getElementById('downloc');
+    if (cmli["o"] != null) downloc.innerText = cmli["o"];
+    downloc.addEventListener('input', () => {
+        if (downloc.value.length) {
+            if (!cmli.setO(downloc.value)) {
+                cmli["o"] = null;
+                changeElementColorByError(downloc, true);
+            } else changeElementColorByError(downloc, false);
+        } else {
+            cmli["o"] = null;
+            changeElementColorByError(downloc, false);
+        }
+        console.log(new cml(cmli));
+    })
     document.getElementById('endownmaxql').innerText = i18nGetMessage("endownmaxq");
     document.getElementById('didownmaxql').innerText = i18nGetMessage("didownmaxq");
     document.getElementById('encodownl').innerText = i18nGetMessage('encodown');
@@ -177,6 +210,10 @@ function addCmlPage(cmli) {
     document.getElementById('httpsprol').innerText = i18nGetMessage('httpspro') + i18nGetMessage('noeffar');
     document.getElementById('jtintl').innerText = i18nGetMessageWithReplace('jtint', { 'value': '1-365' });
     document.getElementById('jtsdatel').innerText = i18nGetMessage('jtsdate');
+    document.getElementById('showql').innerText = i18nGetMessage('showq');
+    document.getElementById('videoindl').innerText = i18nGetMessage('videoind');
+    document.getElementById('audioindl').innerText = i18nGetMessage('audioind');
+    document.getElementById('downlocl').innerText = i18nGetMessage('downloc');
     dealWithnc1(cmli);
     dealWithcws(cmli);
     dealWithSimpleInput(cmli);

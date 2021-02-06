@@ -48,4 +48,8 @@
     ,["bili.command O32", "httpspro"]
     ,["bili.command O33", "jtint"]
     ,["bili.command O34", "jtsdate"]
+    ,["bili.command O35", "showq"]
+    ,["bili.command O36", "videoind"]
+    ,["bili.command O37", "audioind"]
+    ,["bili.command O38", "downloc"]
 ]

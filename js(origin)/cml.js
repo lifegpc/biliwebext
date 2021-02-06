@@ -142,6 +142,23 @@ function checkJts(s) {
     return false;
 }
 /**
+ * 按索引选择画质
+ * @param {number|undefined} s 输入
+ * @returns {boolean} 输入是否有效
+ */
+function checkV(s) {
+    return s == undefined || Math.floor(s) < 1 ? false : true;
+}
+/**
+ * 下载文件夹位置
+ * @param {string|undefined} s 输入
+ * @returns {boolean} 输入是否有效 
+ */
+function checkO(s) {
+    if (s == undefined || !s.length || s.match(/[\*\?"<>|]/)) return false;
+    return true;
+}
+/**
  * 命令行参数
  * @class
  * @constructor
@@ -295,6 +312,27 @@ class cml {
                 /**@type {string?} 下载全弹幕时且视频为番剧时抓取起始日期的默认值*/
                 this["jts"] = null;
         }
+        if (!this.hasOwnProperty("F") || (this["F"] != null && this["F"] !== ""))
+            /**@type {string?} 视频下载时仅显示画质但不下载（不受静默模式影响）*/
+            this["F"] = null;
+        if (!this.hasOwnProperty("v") || this["v"] != null) {
+            var num = this["v"];
+            if (typeof (this["v"]) != "number" || !checkV(num))
+                /**@type {number?} 按索引选择画质*/
+                this["v"] = null;
+        }
+        if (!this.hasOwnProperty("a") || this["a"] != null) {
+            var num = this["a"];
+            if (typeof (this["a"]) != "number" || !checkV(num))
+                /**@type {number?} 按索引选择音质*/
+                this["a"] = null;
+        }
+        if (!this.hasOwnProperty("o") || this["o"] != null) {
+            var str = this["o"];
+            if (typeof (this["o"]) != "string" || !checkO(str))
+                /**@type {string?} 下载文件夹位置*/
+                this["o"] = null;
+        }
     }
     /**
      * 返回GET参数
@@ -398,6 +436,36 @@ class cml {
     setJts(s) {
         var isVaild = checkJts(s);
         if (isVaild) this["jts"] = s;
+        return isVaild;
+    }
+    /**
+     * 设置按索引选择画质
+     * @param {number} n 输入
+     * @returns {boolean} 输入是否有效 
+     */
+    setV(n) {
+        var isVaild = checkV(n);
+        if (isVaild) this["v"] = Math.floor(n);
+        return isVaild;
+    }
+    /**
+     * 设置按索引选择音质
+     * @param {number} n 输入
+     * @returns {boolean} 输入是否有效 
+     */
+    setA(n) {
+        var isVaild = checkV(n);
+        if (isVaild) this["a"] = Math.floor(n);
+        return isVaild;
+    }
+    /**
+     * 设置下载文件夹位置
+     * @param {string} s 输入
+     * @returns {boolean} 输入是否有效
+     */
+    setO(s) {
+        var isVaild = checkO(s);
+        if (isVaild) this["o"] = s;
         return isVaild;
     }
 }
