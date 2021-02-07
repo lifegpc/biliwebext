@@ -159,6 +159,16 @@ function checkO(s) {
     return true;
 }
 /**
+ * 解析收藏夹时若未指定收藏夹ID，解析列表中指定序号的收藏夹
+ * @param {string|undefined} s 输入
+ * @returns {boolean} 输入是否有效
+ */
+function checkAfp(s) {
+    if (s == undefined || !s.length) return false;
+    if (s == "a" || (stringIsNumber(s) && parseInt(s) > 0)) return true;
+    return false;
+}
+/**
  * 命令行参数
  * @class
  * @constructor
@@ -333,6 +343,33 @@ class cml {
                 /**@type {string?} 下载文件夹位置*/
                 this["o"] = null;
         }
+        if (!this.hasOwnProperty("af") || (this["af"] != null && this["af"] !== ""))
+            /**@type {string?} 解析收藏夹时若未指定收藏夹ID，自动解析为默认收藏夹*/
+            this["af"] = null;
+        if (!this.hasOwnProperty("naf") || (this["naf"] != null && this["naf"] !== ""))
+            /**@type {string?} 解析收藏夹时若未指定收藏夹ID，返回收藏夹列表以选择一个ID*/
+            this["naf"] = null;
+        if (!this.hasOwnProperty("afp") || this["afp"] != null) {
+            var str = this["afp"];
+            if (typeof (this["afp"]) != "string" || !checkAfp(str))
+                /**@type {string?} 解析收藏夹时若未指定收藏夹ID，解析列表中指定序号的收藏夹*/
+                this["afp"] = null;
+        }
+        if (!this.hasOwnProperty("s") || (this["s"] != null && this["s"] !== ""))
+            /**@type {string?} 启用静默模式，仅显示版权声明和错误信息和进度信息*/
+            this["s"] = null;
+        if (!this.hasOwnProperty("slt") || (this["slt"] != null && this["slt"] !== ""))
+            /**@type {string?} 下载小视频时，放入文件名中的描述长度可以超过20字*/
+            this["slt"] = null;
+        if (!this.hasOwnProperty("nslt") || (this["nslt"] != null && this["nslt"] !== ""))
+            /**@type {string?} 下载小视频时，放入文件名中的描述长度无法超过20字，超出部分将被丢弃*/
+            this["nslt"] = null;
+        if (!this.hasOwnProperty("te") || (this["te"] != null && this["te"] !== ""))
+            /**@type {string?} requests使用环境变量中的代理设置*/
+            this["te"] = null;
+        if (!this.hasOwnProperty("nte") || (this["nte"] != null && this["nte"] !== ""))
+            /**@type {string?} requests不使用环境变量中的代理设置*/
+            this["nte"] = null;
     }
     /**
      * 返回GET参数
@@ -466,6 +503,16 @@ class cml {
     setO(s) {
         var isVaild = checkO(s);
         if (isVaild) this["o"] = s;
+        return isVaild;
+    }
+    /**
+     * 设置解析收藏夹时若未指定收藏夹ID，解析列表中指定序号的收藏夹
+     * @param {string} s 输入
+     * @returns {boolean} 输入是否有效
+     */
+    setAfp(s) {
+        var isVaild = checkAfp(s);
+        if (isVaild) this["afp"] = s;
         return isVaild;
     }
 }

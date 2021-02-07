@@ -176,6 +176,21 @@ function addCmlPage(cmli) {
         }
         console.log(new cml(cmli));
     })
+    /**@type {HTMLInputElement} 解析收藏夹时若未指定收藏夹ID，解析列表中指定序号的收藏夹*/
+    var afindex = document.getElementById('afindex');
+    if (cmli["afp"] != null) afindex.innerText = cmli["afp"];
+    afindex.addEventListener('input', () => {
+        if (afindex.value.length) {
+            if (!cmli.setAfp(afindex.value)) {
+                cmli["afp"] = null;
+                changeElementColorByError(afindex, true);
+            } else changeElementColorByError(afindex, false);
+        } else {
+            cmli["afp"] = null;
+            changeElementColorByError(afindex, false);
+        }
+        console.log(new cml(cmli));
+    })
     document.getElementById('endownmaxql').innerText = i18nGetMessage("endownmaxq");
     document.getElementById('didownmaxql').innerText = i18nGetMessage("didownmaxq");
     document.getElementById('encodownl').innerText = i18nGetMessage('encodown');
@@ -214,6 +229,14 @@ function addCmlPage(cmli) {
     document.getElementById('videoindl').innerText = i18nGetMessage('videoind');
     document.getElementById('audioindl').innerText = i18nGetMessage('audioind');
     document.getElementById('downlocl').innerText = i18nGetMessage('downloc');
+    document.getElementById('enautofavl').innerText = i18nGetMessage('enautofav');
+    document.getElementById('diautofavl').innerText = i18nGetMessage('diautofav');
+    document.getElementById('afindexl').innerText = i18nGetMessage('afindex');
+    document.getElementById('slientmodl').innerText = i18nGetMessage('slientmod');
+    document.getElementById('ensvdesll').innerText = i18nGetMessage('ensvdesl');
+    document.getElementById('disvdesll').innerText = i18nGetMessage('disvdesl');
+    document.getElementById('enreqenvl').innerText = i18nGetMessage('enreqenv');
+    document.getElementById('direqenvl').innerText = i18nGetMessage('direqenv');
     dealWithnc1(cmli);
     dealWithcws(cmli);
     dealWithSimpleInput(cmli);
