@@ -259,6 +259,12 @@ function addCmlPage(cmli) {
     document.getElementById('arhttpprl').innerText = i18nGetMessage('arhttppr');
     document.getElementById('arhttpsprl').innerText = i18nGetMessage('arhttpspr');
     document.getElementById('prolangl').innerText = i18nGetMessage('prolang');
+    document.getElementById('enadkepl').innerText = i18nGetMessage('enadkep');
+    document.getElementById('diadkepl').innerText = i18nGetMessage('diadkep');
+    document.getElementById('eninfofnl').innerText = i18nGetMessage('eninfofn');
+    document.getElementById('diinfofnl').innerText = i18nGetMessage('diinfofn');
+    document.getElementById('enmutthrl').innerText = i18nGetMessage('enmutthr');
+    document.getElementById('dimutthrl').innerText = i18nGetMessage('dimutthr');
     dealWithnc1(cmli);
     dealWithcws(cmli);
     dealWithSimpleInput(cmli);

@@ -432,6 +432,24 @@ class cml {
                 /**@type {string?} 设置程序语言*/
                 this["lan"] = null;
         }
+        if (!this.hasOwnProperty("bp") || (this["bp"] != null && this["bp"] !== ""))
+            /**@type {string?} 合并完成后删除无用文件时保留封面图片*/
+            this["bp"] = null;
+        if (!this.hasOwnProperty("nbp") || (this["nbp"] != null && this["nbp"] !== ""))
+            /**@type {string?} 合并完成后删除无用文件时删除封面图片*/
+            this["nbp"] = null;
+        if (!this.hasOwnProperty("in") || (this["in"] != null && this["in"] !== ""))
+            /**@type {string?} 将AV/BV号等放入文件名*/
+            this["in"] = null;
+        if (!this.hasOwnProperty("nin") || (this["nin"] != null && this["nin"] !== ""))
+            /**@type {string?} 不将AV/BV号等放入文件名*/
+            this["nin"] = null;
+        if (!this.hasOwnProperty("mt") || (this["mt"] != null && this["mt"] !== ""))
+            /**@type {string?} 在有多个输入的时候启用多线程*/
+            this["mt"] = null;
+        if (!this.hasOwnProperty("nmt") || (this["nmt"] != null && this["nmt"] !== ""))
+            /**@type {string?} 在有多个输入的时候禁用多线程*/
+            this["nmt"] = null;
     }
     /**
      * 返回GET参数
