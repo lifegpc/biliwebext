@@ -28,6 +28,7 @@ function dealWithcws(cmli) {
     function setValue(key, value) {
         if (key == "mc") cmli.setMc(value);
         else if (key == "fa") cmli.setFa(value)
+        else if (key == "lan") cmli.setLan(value);
         else cmli[key] = value;
     }
     var list = document.getElementsByClassName('cws');

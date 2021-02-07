@@ -47,3 +47,11 @@ function i18nGetMessageWithReplace(messageName, mapdata, substitutions = [], opt
     })
     return str;
 }
+/**
+ * 返回UI语言
+ * @returns {string} UI语言
+ */
+function i18nGetUILanguage() {
+    var get = window['chrome']['i18n']['getUILanguage'];
+    return get();
+}

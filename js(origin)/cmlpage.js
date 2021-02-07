@@ -191,6 +191,19 @@ function addCmlPage(cmli) {
         }
         console.log(new cml(cmli));
     })
+    /**@type {HTMLSelectElement} 语言选项*/
+    var prolangs = document.getElementById('prolangs');
+    lanlist.forEach((lan) => {
+        var sel = document.createElement('option');
+        if (lanname.hasOwnProperty(lan)) sel.innerText = lanname[lan];
+        else {
+            sel.innerText = lan;
+            console.warn('Can not find "', lan, '"\'s name.');
+        }
+        sel.value = lan;
+        prolangs.append(sel);
+    })
+    prolangs.value = getLan(i18nGetUILanguage());
     document.getElementById('endownmaxql').innerText = i18nGetMessage("endownmaxq");
     document.getElementById('didownmaxql').innerText = i18nGetMessage("didownmaxq");
     document.getElementById('encodownl').innerText = i18nGetMessage('encodown');
@@ -237,6 +250,15 @@ function addCmlPage(cmli) {
     document.getElementById('disvdesll').innerText = i18nGetMessage('disvdesl');
     document.getElementById('enreqenvl').innerText = i18nGetMessage('enreqenv');
     document.getElementById('direqenvl').innerText = i18nGetMessage('direqenv');
+    document.getElementById('enadesubl').innerText = i18nGetMessage('enadesub');
+    document.getElementById('diadesubl').innerText = i18nGetMessage('diadesub');
+    document.getElementById('enansdnsl').innerText = i18nGetMessage('enansdns');
+    document.getElementById('diansdnsl').innerText = i18nGetMessage('diansdns');
+    document.getElementById('enchtonl').innerText = i18nGetMessage('enchton');
+    document.getElementById('dichtonl').innerText = i18nGetMessage('dichton');
+    document.getElementById('arhttpprl').innerText = i18nGetMessage('arhttppr');
+    document.getElementById('arhttpsprl').innerText = i18nGetMessage('arhttpspr');
+    document.getElementById('prolangl').innerText = i18nGetMessage('prolang');
     dealWithnc1(cmli);
     dealWithcws(cmli);
     dealWithSimpleInput(cmli);

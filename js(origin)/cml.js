@@ -168,6 +168,38 @@ function checkAfp(s) {
     if (s == "a" || (stringIsNumber(s) && parseInt(s) > 0)) return true;
     return false;
 }
+/**支持语言列表*/
+var lanlist = ['en', 'ja', 'zh_CN'];
+/**支持语言名称*/
+var lanname = { 'en': 'English', 'ja': '日本語', 'zh_CN': '中文（中国）' };
+/**
+ * 根据输入选择适当的语言
+ * @param {string} s 输入
+ * @returns {string} 输出 
+ */
+function getLan(s) {
+    if (!s.length) return 'en';
+    /**@type {Object.<string, string>}*/
+    var obj = {};
+    lanlist.forEach((v) => {
+        obj[v.toLowerCase()] = v;
+        if (v.length > 2) obj[v.toLowerCase().substr(0, 2)] = v;
+    });
+    var temp = s.toLowerCase();
+    if (obj.hasOwnProperty(temp)) return obj[temp];
+    if (s.length > 2 && obj.hasOwnProperty(temp.substr(0, 2))) return obj[temp.substr(0, 2)];
+    return 'en';
+}
+/**
+ * 设置程序语言
+ * @param {string|undefined} s 输入
+ * @returns {boolean} 输入是否有效
+ */
+function checkLan(s) {
+    if (s == undefined || !s.length) return false;
+    if (lanlist.indexOf(s) > -1) return true;
+    return false;
+}
 /**
  * 命令行参数
  * @class
@@ -370,6 +402,36 @@ class cml {
         if (!this.hasOwnProperty("nte") || (this["nte"] != null && this["nte"] !== ""))
             /**@type {string?} requests不使用环境变量中的代理设置*/
             this["nte"] = null;
+        if (!this.hasOwnProperty("bd") || (this["bd"] != null && this["bd"] !== ""))
+            /**@type {string?} 合并完成后删除无用文件时保留字幕文件*/
+            this["bd"] = null;
+        if (!this.hasOwnProperty("nbd") || (this["nbd"] != null && this["nbd"] !== ""))
+            /**@type {string?} 合并完成后删除无用文件时删除字幕文件*/
+            this["nbd"] = null;
+        if (!this.hasOwnProperty("cad") || (this["cad"] != null && this["cad"] !== ""))
+            /**@type {string?} 使用aria2c时关闭异步DNS*/
+            this["cad"] = null;
+        if (!this.hasOwnProperty("ncad") || (this["ncad"] != null && this["ncad"] !== ""))
+            /**@type {string?} 使用aria2c时启用异步DNS*/
+            this["ncad"] = null;
+        if (!this.hasOwnProperty("lrh") || (this["lrh"] != null && this["lrh"] !== ""))
+            /**@type {string?} 直播回放简介写入元数据时将HTML转换为普通文本*/
+            this["lrh"] = null;
+        if (!this.hasOwnProperty("nlrh") || (this["nlrh"] != null && this["nlrh"] !== ""))
+            /**@type {string?} 直播回放简介写入元数据时不将HTML转换为普通文本*/
+            this["nlrh"] = null;
+        if (!this.hasOwnProperty("ahttpproxy") || (this["ahttpproxy"] != null && typeof (this["ahttpproxy"]) != "string"))
+            /**@type {string?} 指定aria2c使用的http代理*/
+            this["ahttpproxy"] = null;
+        if (!this.hasOwnProperty("ahttpsproxy") || (this["ahttpsproxy"] != null && typeof (this["ahttpsproxy"]) != "string"))
+            /**@type {string?} 指定aria2c使用的https代理*/
+            this["ahttpsproxy"] = null;
+        if (!this.hasOwnProperty('lan') || this["lan"] != null) {
+            var str = this["lan"];
+            if (typeof (this["lan"]) != "string" || !checkLan(str))
+                /**@type {string?} 设置程序语言*/
+                this["lan"] = null;
+        }
     }
     /**
      * 返回GET参数
@@ -513,6 +575,17 @@ class cml {
     setAfp(s) {
         var isVaild = checkAfp(s);
         if (isVaild) this["afp"] = s;
+        return isVaild;
+    }
+    /**
+     * 设置程序语言
+     * @param {string} s 输入
+     * @returns {boolean} 输入是否有效
+     */
+    setLan(s) {
+        var lan = getLan(s);
+        var isVaild = checkLan(lan);
+        if (isVaild) this["lan"] = lan;
         return isVaild;
     }
 }
