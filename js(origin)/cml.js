@@ -168,6 +168,14 @@ function checkAfp(s) {
     if (s == "a" || (stringIsNumber(s) && parseInt(s) > 0)) return true;
     return false;
 }
+/**
+ * 当下载直播视频时的URL的索引
+ * @param {number|undefined} s 输入
+ * @returns {boolean} 输入是否有效
+ */
+function checkVi(s) {
+    return s == undefined || Math.floor(s) < 0 ? false : true;
+}
 /**支持语言列表*/
 var lanlist = ['en', 'ja', 'zh_CN'];
 /**支持语言名称*/
@@ -450,6 +458,12 @@ class cml {
         if (!this.hasOwnProperty("nmt") || (this["nmt"] != null && this["nmt"] !== ""))
             /**@type {string?} 在有多个输入的时候禁用多线程*/
             this["nmt"] = null;
+        if (!this.hasOwnProperty("vi") || this["vi"] != null) {
+            var num = this["vi"];
+            if (typeof (this["vi"]) != "number" || !checkVi(num))
+                /**@type {number?} 当下载直播视频时的URL的索引*/
+                this["vi"] = null;
+        }
     }
     /**
      * 返回GET参数
@@ -604,6 +618,16 @@ class cml {
         var lan = getLan(s);
         var isVaild = checkLan(lan);
         if (isVaild) this["lan"] = lan;
+        return isVaild;
+    }
+    /**
+     * 设置当下载直播视频时的URL的索引
+     * @param {number} s 输入
+     * @returns {boolean} 输入是否有效
+     */
+    setVi(s) {
+        var isVaild = checkVi(s);
+        if (isVaild) this["vi"] = Math.floor(s);
         return isVaild;
     }
 }

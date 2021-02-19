@@ -203,6 +203,21 @@ function addCmlPage(cmli) {
         sel.value = lan;
         prolangs.append(sel);
     })
+    /**@type {HTMLInputElement} 直播视频URL index*/
+    var livevind = document.getElementById('livevind');
+    if (cmli["vi"] != null) livevind.value = cmli["vi"];
+    livevind.addEventListener('input', () => {
+        if (livevind.value.length) {
+            if (!cmli.setVi(livevind.valueAsNumber)) {
+                cmli["vi"] = null;
+                changeElementColorByError(livevind, true);
+            } else changeElementColorByError(livevind, false);
+        } else {
+            cmli["vi"] = null;
+            changeElementColorByError(livevind, false);
+        }
+        console.log(new cml(cmli));
+    })
     prolangs.value = getLan(i18nGetUILanguage());
     document.getElementById('endownmaxql').innerText = i18nGetMessage("endownmaxq");
     document.getElementById('didownmaxql').innerText = i18nGetMessage("didownmaxq");
@@ -265,6 +280,7 @@ function addCmlPage(cmli) {
     document.getElementById('diinfofnl').innerText = i18nGetMessage('diinfofn');
     document.getElementById('enmutthrl').innerText = i18nGetMessage('enmutthr');
     document.getElementById('dimutthrl').innerText = i18nGetMessage('dimutthr');
+    document.getElementById('livevindl').innerText = i18nGetMessage('livevind');
     dealWithnc1(cmli);
     dealWithcws(cmli);
     dealWithSimpleInput(cmli);
